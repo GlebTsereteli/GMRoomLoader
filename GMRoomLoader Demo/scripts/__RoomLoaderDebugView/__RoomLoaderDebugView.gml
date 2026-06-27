@@ -1,6 +1,7 @@
 // feather ignore all
 // Documentation: https://glebtsereteli.github.io/GMRoomLoader/pages/api/debugView/debugView
 
+/// @ignore
 function __RoomLoaderDebugView() constructor {
 	static __view = undefined;
 	static __sectionMain = undefined;

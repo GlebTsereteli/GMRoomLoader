@@ -1,5 +1,6 @@
 // feather ignore all
 
+/// @ignore
 function __RoomLoaderDebugViewPosMode(_name) constructor {
 	__name = _name;
 	
@@ -7,6 +8,8 @@ function __RoomLoaderDebugViewPosMode(_name) constructor {
 	static __GetX = __RoomLoaderNoop;
 	static __GetY = __RoomLoaderNoop;
 }
+
+/// @ignore
 function __RoomLoaderDebugViewPosModeMouse() : __RoomLoaderDebugViewPosMode("Mouse") constructor {
 	static __InitDbg = function() {
 		dbg_checkbox(ref_create(self, "__gui"), "In GUI Space?");
@@ -20,6 +23,8 @@ function __RoomLoaderDebugViewPosModeMouse() : __RoomLoaderDebugViewPosMode("Mou
 	
 	__gui = false;
 }
+
+/// @ignore
 function __RoomLoaderDebugViewPosModeCustom() : __RoomLoaderDebugViewPosMode("Custom") constructor {
 	static __InitDbg = function() {
 		dbg_text_input(ref_create(self, "__x"), "X", "r");
@@ -35,6 +40,8 @@ function __RoomLoaderDebugViewPosModeCustom() : __RoomLoaderDebugViewPosMode("Cu
 	__x = 0;
 	__y = 0;
 }
+
+/// @ignore
 function __RoomLoaderDebugViewPosModeRandom() : __RoomLoaderDebugViewPosMode("Random") constructor {
 	static __InitDbg = function() {
 		dbg_text_input(ref_create(self, "__x1"), "X1", "r");
@@ -54,6 +61,8 @@ function __RoomLoaderDebugViewPosModeRandom() : __RoomLoaderDebugViewPosMode("Ra
 	__x2 = 1000;
 	__y2 = 1000;
 }
+
+/// @ignore
 function __RoomLoaderDebugViewPosModeGetters() : __RoomLoaderDebugViewPosMode("Getters") constructor {
 	static __InitDbg = function() {
 		dbg_text(" X Getter: " + ((ROOMLOADER_DEBUG_VIEW_GET_X != undefined) 

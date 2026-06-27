@@ -14,7 +14,7 @@ function RoomLoader() {
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
 	static DataInit = function() {
-		static _methodName = "DataInit";
+		/*@ignore*/ static _methodName = "DataInit";
 		
 		var _i = 0; repeat (argument_count) {
 			__data.__Add(argument[_i], _methodName);
@@ -31,7 +31,7 @@ function RoomLoader() {
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
 	static DataInitArray = function(_rooms) {
-		static _methodName = "DataInitArray";
+		/*@ignore*/ static _methodName = "DataInitArray";
 		
 		__RoomLoaderCatchArray(__messagePrefix, _methodName, _rooms);
 		
@@ -50,17 +50,17 @@ function RoomLoader() {
 	/// @returns {Array<Asset.GMRoom>}
 	/// @self RoomLoader
 	static DataInitPrefix = function(_prefix) {
-		static _methodName = "DataInitPrefix";
-		static _closure = { prefix: undefined };
-		static _filter = method(_closure, function(_room) {
+		/*@ignore*/ static _methodName = "DataInitPrefix";
+		/*@ignore*/ static _closure = { __prefix: undefined };
+		/*@ignore*/ static _Filter = method(_closure, function(_room) {
 			var _name = room_get_name(_room);
-			return string_starts_with(_name, prefix);
+			return string_starts_with(_name, __prefix);
 		});
 		
 		__RoomLoaderCatchString(__messagePrefix, _methodName, _prefix);
 		
-		_closure.prefix = _prefix;
-		var _rooms = array_filter(__allRooms, _filter);
+		_closure.__prefix = _prefix;
+		var _rooms = array_filter(__allRooms, _Filter);
 		
 		var _n = array_length(_rooms);
 		if (_n == 0) {
@@ -83,7 +83,7 @@ function RoomLoader() {
 	/// @returns {Array<Asset.GMRoom>}
 	/// @self RoomLoader
 	static DataInitTag = function(_tag) {
-		static _methodName = "DataInitTag";
+		/*@ignore*/ static _methodName = "DataInitTag";
 		__RoomLoaderCatchString(__messagePrefix, _methodName, _tag);
 		
 		var _rooms = tag_get_asset_ids(_tag, asset_room);
@@ -109,11 +109,11 @@ function RoomLoader() {
 	/// @returns {Array<Asset.GMRoom>}
 	/// @self RoomLoader
 	static DataInitAll = function(_blacklist = []) {
-		static _closure = {};
-		static _Filter = method(_closure, function(_room) {
+		/*@ignore*/ static _methodName = "DataInitAll";
+		/*@ignore*/ static _closure = {};
+		/*@ignore*/ static _Filter = method(_closure, function(_room) {
 			return not array_contains(__blacklist, _room);
 		});
-		static _methodName = "DataInitAll";
 		
 		__RoomLoaderCatchArray(__messagePrefix, _methodName, _blacklist);
 		
@@ -138,7 +138,7 @@ function RoomLoader() {
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
 	static DataRemove = function() {
-		static _methodName = "DataRemove";
+		/*@ignore*/ static _methodName = "DataRemove";
 		
 		var _i = 0; repeat (argument_count) {
 			__data.__Remove(argument[_i], _methodName);
@@ -155,7 +155,7 @@ function RoomLoader() {
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
 	static DataRemoveArray = function(_rooms) {
-		static _methodName = "DataRemoveArray";
+		/*@ignore*/ static _methodName = "DataRemoveArray";
 		
 		__RoomLoaderCatchArray(__messagePrefix, _methodName, _rooms);
 		
@@ -174,7 +174,7 @@ function RoomLoader() {
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
 	static DataRemovePrefix = function(_prefix) {
-		static _methodName = "DataRemovePrefix";
+		/*@ignore*/ static _methodName = "DataRemovePrefix";
 		
 		__RoomLoaderCatchString(__messagePrefix, _methodName, _prefix);
 		
@@ -205,7 +205,7 @@ function RoomLoader() {
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
 	static DataRemoveTag = function(_tag) {
-		static _methodName = "DataRemoveTag";
+		/*@ignore*/ static _methodName = "DataRemoveTag";
 		
 		__RoomLoaderCatchString(__messagePrefix, _methodName, _tag);
 		
@@ -229,7 +229,7 @@ function RoomLoader() {
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
 	static DataClear = function() {
-		static _methodName = "DataClear";
+		/*@ignore*/ static _methodName = "DataClear";
 		
 		if (struct_names_count(__data.__pool) == 0) {
 			__RoomLoaderLogMethod(__messagePrefix, _methodName, "There's no data to clear");
@@ -264,7 +264,7 @@ function RoomLoader() {
 	/// @returns {Real}
 	/// @self RoomLoader
 	static DataGetWidth = function(_room) {
-		static _methodName = "DataGetWidth";
+		/*@ignore*/ /*@ignore*/ static _methodName = "DataGetWidth";
 		
 		var _data = __GetData(_room, _methodName, "get width for");
 		
@@ -278,7 +278,7 @@ function RoomLoader() {
 	/// @returns {Real}
 	/// @self RoomLoader
 	static DataGetHeight = function(_room) {
-		static _methodName = "DataGetHeight";
+		/*@ignore*/ /*@ignore*/ static _methodName = "DataGetHeight";
 		
 		var _data = __GetData(_room, _methodName, "get height for");
 		
@@ -292,7 +292,7 @@ function RoomLoader() {
 	/// @returns {Array<String>}
 	/// @self RoomLoader
 	static DataGetLayerNames = function(_room) {
-		static _methodName = "DataGetLayerNames";
+		/*@ignore*/ /*@ignore*/ static _methodName = "DataGetLayerNames";
 		
 		var _data = __GetData(_room, _methodName, "get layer names for");
 		
@@ -310,9 +310,9 @@ function RoomLoader() {
 	/// @returns {Array<Struct>}
 	/// @self RoomLoader
 	static DataGetInstances = function(_room, _obj = undefined) {
-		static _methodName = "DataGetInstances";
-		static _closure = {};
-		static _Filter = method(_closure, function(_inst) {
+		/*@ignore*/ static _methodName = "DataGetInstances";
+		/*@ignore*/ static _closure = {};
+		/*@ignore*/ static _Filter = method(_closure, function(_inst) {
 			return (_inst.object == __object);
 		});
 		
@@ -331,9 +331,9 @@ function RoomLoader() {
 	/// @returns {Struct,Undefined}
 	/// @self RoomLoader
 	static DataGetInstance = function(_room, _id) {
-		static _methodName = "DataGetInstance";
-		static _closure = {};
-		static _Find = method(_closure, function(_inst) {
+		/*@ignore*/ static _methodName = "DataGetInstance";
+		/*@ignore*/ static _closure = {};
+		/*@ignore*/ static _Find = method(_closure, function(_inst) {
 			return (_inst.id == __id);
 		});
 		
@@ -355,7 +355,7 @@ function RoomLoader() {
 	/// @returns {Struct}
 	/// @self RoomLoader
 	static DataGetTilemap = function(_room, _layerName) {
-		static _methodName = "DataGetTilemap";
+		/*@ignore*/ static _methodName = "DataGetTilemap";
 		
 		var _data = __GetData(_room, _methodName, "get tilemap data from");
 		var _layer = _data.__tilemapsLut[$ _layerName];
@@ -387,9 +387,9 @@ function RoomLoader() {
 	/// @returns {Struct.RoomLoaderPayload,Undefined}
 	/// @self RoomLoader
 	static Load = function(_room, _x, _y, _xOrigin = __xOrigin, _yOrigin = __yOrigin, _flags = __flags, _xScale = __xScale, _yScale = __yScale, _angle = __angle) {
-		static _methodName = "Load";
-		static _nonRoomMessage = "load";
-		static _benchMessage = "Loaded";
+		/*@ignore*/ static _methodName = "Load";
+		/*@ignore*/ static _nonRoomMessage = "load";
+		/*@ignore*/ static _benchMessage = "Loaded";
 		
 		var _data = __GetData(_room, _methodName, _nonRoomMessage);
 		
@@ -422,8 +422,8 @@ function RoomLoader() {
 	/// @returns {Array<Id.Instance>}
 	/// @self RoomLoader
 	static LoadInstances = function(_room, _x, _y, _layerOrDepth, _xOrigin = __xOrigin, _yOrigin = __yOrigin, _xScale = __xScale, _yScale = __yScale, _angle = __angle) {
-		static _methodName = "LoadInstances";
-		static _nonRoomMessage = "load instances from";
+		/*@ignore*/ static _methodName = "LoadInstances";
+		/*@ignore*/ static _nonRoomMessage = "load instances from";
 		
 		var _data = __GetData(_room, _methodName, _nonRoomMessage);
 		
@@ -504,8 +504,8 @@ function RoomLoader() {
 	/// @returns {Id.Tilemap}
 	/// @self RoomLoader
 	static LoadTilemap = function(_room, _x, _y, _sourceLayerName, _targetLayer = _sourceLayerName, _xOrigin = __xOrigin, _yOrigin = __yOrigin, _mirror = (__xScale < 0), _flip = (__yScale < 0), _angle = __angle, _tileset = __tileset) {
-		static _methodName = "LoadTilemap";
-		static _nonRoomMessage = "load tilemaps from";
+		/*@ignore*/ static _methodName = "LoadTilemap";
+		/*@ignore*/ static _nonRoomMessage = "load tilemaps from";
 		
 		if (not layer_exists(_targetLayer)) {
 			__RoomLoaderErrorMethod(__messagePrefix, _methodName, $"Target layer \"{_targetLayer}\" doesn't exist in the current room");
@@ -551,7 +551,7 @@ function RoomLoader() {
 	/// @returns {Id.Sprite}
 	/// @self RoomLoader
 	static ScreenshotSprite = function(_room, _xOrigin = __xOrigin, _yOrigin = __yOrigin, _flags = __flags, _xScale = __xScale, _yScale = __yScale) {
-		static _methodName = "ScreenshotSprite";
+		/*@ignore*/ static _methodName = "ScreenshotSprite";
 		
 		var _data = __GetData(_room, _methodName, "take a sprite screenshot of");
 		
@@ -574,7 +574,7 @@ function RoomLoader() {
 	/// @returns {Id.Surface}
 	/// @self RoomLoader
 	static ScreenshotSurface = function(_room, _flags = __flags, _xScale = __xScale, _yScale = __yScale) {
-		static _methodName = "ScreenshotSurface";
+		/*@ignore*/ static _methodName = "ScreenshotSurface";
 		
 		var _data = __GetData(_room, _methodName, "take a surface screenshot of");
 		
@@ -598,7 +598,7 @@ function RoomLoader() {
 	/// @returns {Struct}
 	/// @self RoomLoader
 	static ScreenshotBuffer = function(_room, _flags = __flags, _xScale = __xScale, _yScale = __yScale) {
-		static _methodName = "ScreenshotBuffer";
+		/*@ignore*/ static _methodName = "ScreenshotBuffer";
 		
 		var _data = __GetData(_room, _methodName, "take a buffer screenshot of");
 		
@@ -1145,29 +1145,30 @@ function RoomLoader() {
 	
 	#region __private
 	
-	static __messagePrefix = "RoomLoader";
-	static __data = new __RoomLoaderDataCore();
-	static __benchTime = undefined;
+	/*@ignore*/ static __messagePrefix = "RoomLoader";
+	/*@ignore*/ static __data = new __RoomLoaderDataCore();
+	/*@ignore*/ static __benchTime = undefined;
 	
-	static __allRooms = asset_get_ids(asset_room);
-	static __layerWhitelist = new __RoomLoaderLayerFilter("Whitelist", true);
-	static __layerBlacklist = new __RoomLoaderLayerFilter("Blacklist", false);
-	static __payload = undefined;
-	static __debugView = new __RoomLoaderDebugView();
+	/*@ignore*/ static __allRooms = asset_get_ids(asset_room);
+	/*@ignore*/ static __layerWhitelist = new __RoomLoaderLayerFilter("Whitelist", true);
+	/*@ignore*/ static __layerBlacklist = new __RoomLoaderLayerFilter("Blacklist", false);
+	/*@ignore*/ static __payload = undefined;
+	/*@ignore*/ static __debugView = new __RoomLoaderDebugView();
 	
-	static __xOrigin = ROOMLOADER_DEFAULT_XORIGIN;
-	static __yOrigin = ROOMLOADER_DEFAULT_YORIGIN;
-	static __flags = ROOMLOADER_DEFAULT_FLAGS;
-	static __flagsAreDefault = true;
-	static __xScale = 1;
-	static __yScale = 1;
-	static __angle = 0;
-	static __tileset = undefined;
-	static __left = 0;
-	static __top = 0;
-	static __width = 1;
-	static __height = 1;
+	/*@ignore*/ static __xOrigin = ROOMLOADER_DEFAULT_XORIGIN;
+	/*@ignore*/ static __yOrigin = ROOMLOADER_DEFAULT_YORIGIN;
+	/*@ignore*/ static __flags = ROOMLOADER_DEFAULT_FLAGS;
+	/*@ignore*/ static __flagsAreDefault = true;
+	/*@ignore*/ static __xScale = 1;
+	/*@ignore*/ static __yScale = 1;
+	/*@ignore*/ static __angle = 0;
+	/*@ignore*/ static __tileset = undefined;
+	/*@ignore*/ static __left = 0;
+	/*@ignore*/ static __top = 0;
+	/*@ignore*/ static __width = 1;
+	/*@ignore*/ static __height = 1;
 	
+	/// @ignore
 	static __ResetState = function() {
 		__xOrigin = ROOMLOADER_DEFAULT_XORIGIN;
 		__yOrigin = ROOMLOADER_DEFAULT_YORIGIN;
@@ -1182,6 +1183,8 @@ function RoomLoader() {
 		__width = 1;
 		__height = 1;
 	};
+	
+	/// @ignore
 	static __ResetStateFlags = function() {
 		if (__flagsAreDefault) {
 			__flags = ROOMLOADER_FLAG_NONE;
@@ -1189,10 +1192,13 @@ function RoomLoader() {
 		}
 	};
 	
+	/// @ignore
 	static __GetData = function(_room, _methodName, _nonRoomMessage) {
 		__RoomLoaderCatchNonRoom(__messagePrefix, _methodName, _room, _nonRoomMessage);
 		return __data.__Get(_room, _methodName);
 	};
+	
+	/// @ignore
 	static __LayerFailedFilters = function(_name) {
 		var _match = ((__layerWhitelist.__check(_name)) and (not __layerBlacklist.__check(_name)));
 		return (not _match);

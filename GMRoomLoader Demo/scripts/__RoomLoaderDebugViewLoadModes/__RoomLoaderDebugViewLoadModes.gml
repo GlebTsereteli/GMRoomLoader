@@ -1,11 +1,14 @@
 // feather ignore all
 
+/// @ignore
 function __RoomLoaderDebugViewLoadMode(_name) constructor {
 	__owner = other;
 	__name = _name;
 	
 	static __InitDbg = __RoomLoaderNoop;
 }
+
+/// @ignore
 function __RoomLoaderDebugViewLoadModeRoom() : __RoomLoaderDebugViewLoadMode("Room") constructor {
 	static __InitDbg = function() {
 		__InitDbgOrigin();
@@ -50,6 +53,8 @@ function __RoomLoaderDebugViewLoadModeRoom() : __RoomLoaderDebugViewLoadMode("Ro
 		array_push(__loadedPayloads, _payload);
 	};
 }
+
+/// @ignore
 function __RoomLoaderDebugViewLoadModeInstances() : __RoomLoaderDebugViewLoadMode("Instances") constructor {
 	static __InitDbg = function() {
 		dbg_text_input(ref_create(self, "__depth"), "Depth", "r");
@@ -65,6 +70,8 @@ function __RoomLoaderDebugViewLoadModeInstances() : __RoomLoaderDebugViewLoadMod
 		__loadedInstances = array_concat(__loadedInstances, _instances);
 	};
 }
+
+/// @ignore
 function __RoomLoaderDebugViewLoadModeTilemap() : __RoomLoaderDebugViewLoadMode("Tilemap") constructor {
 	static __InitDbg = function() {
 		dbg_text_input(ref_create(self, "__sourceLayerName"), "Source Layer Name", "s");
