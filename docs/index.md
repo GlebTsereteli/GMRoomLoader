@@ -36,15 +36,42 @@ features:
 
 ---
 
-<h2 style="text-align:center;">GameMaker Awards</h2>
+<hr style="border: none; border-top: 2px solid #888; margin:4em 0 1em;" />
 
-<div style="display:flex;gap:12px;align-items:center;margin-top:2em;">
+<h2 style="text-align:center; border-top: none; padding-top: 0; margin-top: 0;">GameMaker Awards</h2>
+
+<p style="text-align:center;">GMRoomLoader won Best Tool at the <a href="https://gamemaker.io/en/blog/gamemaker-awards-2025">2025 GameMaker Awards</a>, after being <a href="https://gamemaker.io/en/blog/gamemaker-awards-2024-winners">nominated</a> the year before.</p>
+
+<div style="display:flex;gap:12px;align-items:center;margin-top:1em;">
   <img src="https://github.com/user-attachments/assets/9b2dee65-a891-4d88-8025-3dffb4549213" alt="2025 Award" style="flex:1.784 1 0;width:0;height:auto;">
   <img src="https://github.com/user-attachments/assets/751e1808-4738-4233-86ba-8d9a373ab2a8" alt="Trophy" style="flex:0.75 1 0;width:0;height:auto;">
   <img src="https://github.com/user-attachments/assets/9f24ea91-21da-4f2c-9427-f8ab9cfb778d" alt="2024 Award" style="flex:1.784 1 0;width:0;height:auto;">
 </div>
 
-<h2 style="text-align:center;">GMRoomLoader Team</h2>
+<hr style="border: none; border-top: 2px solid #888; margin:4em 0 1em;" />
+
+<h2 style="text-align:center; border-top: none; padding-top: 0; margin-top: 0;">Tutorials</h2>
+
+<p style="text-align:center;">New to GMRoomLoader? These are a great place to start.</p>
+
+<div style="display:flex;gap:12px;align-items:flex-start;margin-top:1em;">
+  <div style="flex:1 1 0;width:0;">
+    <div style="position:relative;width:100%;padding-top:56.25%;">
+      <iframe src="https://www.youtube.com/embed/gUlcha0e7Hg" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="YouTube video player" frameborder="0" allow="accelerated-encoding; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <p style="text-align:center;margin-top:0.75em;"><a href="https://www.youtube.com/@PixelatedPope">Pixelated Pope</a> builds a Spelunky-style procedural dungeon, carving a path of hand-crafted rooms loaded at runtime with GMRoomLoader.</p>
+  </div>
+  <div style="flex:1 1 0;width:0;">
+    <div style="position:relative;width:100%;padding-top:56.25%;">
+      <iframe src="https://www.youtube.com/embed/mZegvOC47dw" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="YouTube video player" frameborder="0" allow="accelerated-encoding; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <p style="text-align:center;margin-top:0.75em;"><a href="https://www.youtube.com/@DragoniteSpam">DragoniteSpam</a> introduces GMRoomLoader basics and goes over a few interesting edge cases.</p>
+  </div>
+</div>
+
+<hr style="border: none; border-top: 2px solid #888; margin:4em 0 1em;" />
+
+<h2 style="text-align:center; border-top: none; padding-top: 0; margin-top: 0;">GMRoomLoader Team</h2>
 
 <script setup>
 import { VPTeamMembers } from 'vitepress/theme'
@@ -72,7 +99,7 @@ const team = [
   {
     avatar: 'neeri.jpg',
     name: 'neerikiffu',
-    title: 'Logo Art',
+    title: 'Logo',
     links: [
       { icon: 'bluesky', link: 'https://bsky.app/profile/neerikiffu.bsky.social' },
     ]

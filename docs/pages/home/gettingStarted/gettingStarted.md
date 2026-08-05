@@ -8,6 +8,14 @@ We'll begin by importing the `.yymps` package. Then in the [First Setup](#first-
 
 Let's get started!
 
+:::tip ℹ️ SEE IT IN ACTION
+For a hands-on look at GMRoomLoader in a real game scenario, check out [Pixelated Pope](https://www.youtube.com/c/PixelatedPope)'s procedural Spelunky dungeon tutorial on the official GameMaker YouTube channel.
+
+<div style="position:relative;width:100%;padding-top:56.25%;">
+  <iframe src="https://www.youtube.com/embed/gUlcha0e7Hg" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="YouTube video player" frameborder="0" allow="accelerated-encoding; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+:::
+
 ## Requirements
 
 * GameMaker version [LTS 2026](https://gamemaker.io/en/download).
@@ -116,5 +124,5 @@ Still stuck, or have a question Troubleshooting doesn't answer? Check the [FAQ](
 ## What's Next?
 
 That's it for the basic setup! To learn more, check out:
-* The [Demos & Tutorials](/pages/home/demosTutorials/demosTutorials) page to learn about available demos and tutorials.
+* The [Demos & Tutorials](/pages/home/demosTutorials/demosTutorials) page for video tutorials and demo projects covering the library in practice.
 * The [API](/pages/api/overview) section to explore all available methods.
