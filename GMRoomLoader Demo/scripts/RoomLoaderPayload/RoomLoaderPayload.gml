@@ -395,59 +395,6 @@ function RoomLoaderPayload(_room) constructor {
 	
 	#region __private
 	
-	static __Container = function(_OnDestroy) constructor {
-		__ids = [];
-		__roomIds = [];
-		
-		__OnDestroy = _OnDestroy;
-		
-		static __Add = function(_id, _roomId) {
-			array_push(__ids, _id);
-			array_push(__roomIds, _roomId);
-		};
-		static __Get = function(_roomId) {
-			var _index = array_get_index(__roomIds, _roomId);
-			return ((_index == -1) ? undefined : __ids[_index]);
-		};
-		static __Destroy = function() {
-			array_foreach(__ids, function(_element) {
-				__OnDestroy(_element);
-			});
-		};
-	};
-	static __Instances = function() constructor {
-		__ids = undefined;
-		__roomIds = undefined;
-		__index = 0;
-		
-		static __Init = function(_n) {
-			__ids = array_create(_n, noone);
-			__roomIds = array_create(_n, noone);
-		};
-		static __Finalize = function() {
-			if (__index != array_length(__ids)) {
-				array_resize(__ids, __index);
-				array_resize(__roomIds, __index);
-			}
-		};
-		static __Get = function(_roomId) {
-			var _index = array_get_index(__roomIds, _roomId);
-			return ((_index == -1) ? noone : __ids[_index]);
-		};
-		static __Detach = function() {
-			var _ids = __ids;
-			__ids = [];
-			__roomIds = [];
-			
-			return _ids;
-		};
-		static __Destroy = function() {
-			var _i = 0; repeat (array_length(__ids)) {
-				instance_destroy(__ids[_i]);
-				_i++;
-			}
-		};
-	};
 	static __messagePrefix = "Payload";
 	
 	__room = _room;
@@ -455,14 +402,14 @@ function RoomLoaderPayload(_room) constructor {
 	__obb = undefined;
 	__polygon = undefined;
 	
-	__layers = new __Container(layer_destroy);
-	__instances = new __Instances();
-	__tilemaps = new __Container(layer_tilemap_destroy);
-	__sprites = new __Container(layer_sprite_destroy);
-	__sequences = new __Container(layer_sequence_destroy);
-	__particleSystems = new __Container(part_system_destroy);
-	__texts = new __Container(layer_text_destroy);
-	__backgrounds = new __Container(layer_background_destroy);
+	__layers = new __RoomLoaderPayloadContainer(layer_destroy);
+	__instances = new __RoomLoaderPayloadInstances();
+	__tilemaps = new __RoomLoaderPayloadContainer(layer_tilemap_destroy);
+	__sprites = new __RoomLoaderPayloadContainer(layer_sprite_destroy);
+	__sequences = new __RoomLoaderPayloadContainer(layer_sequence_destroy);
+	__particleSystems = new __RoomLoaderPayloadContainer(part_system_destroy);
+	__texts = new __RoomLoaderPayloadContainer(layer_text_destroy);
+	__backgrounds = new __RoomLoaderPayloadContainer(layer_background_destroy);
 	__cleanedUp = false;
 	
 	static __GetTargetDepth = function(_lod, _methodName) {

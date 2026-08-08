@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__RoomLoaderPayload",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__RoomLoaderPayload",
+  "parent":{
+    "name":"Core",
+    "path":"folders/GMRoomLoader/(System)/Core.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
