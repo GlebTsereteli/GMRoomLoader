@@ -37,7 +37,8 @@ function __RoomLoaderLogMethodTimed(_prefix, _methodName, _message, _room) {
 
 /// @ignore
 function __RoomLoaderError(_message) {
-	show_error($"[{__ROOMLOADER_NAME} {__ROOMLOADER_VERSION}] Error.\n-----------------------------------\n{_message}.\n\n", true);
+	var _div = $"\n{string_repeat("—", 100)}\n";
+	show_error($"\n{_div}[{__ROOMLOADER_NAME} {__ROOMLOADER_VERSION}] ERROR!\n{_message}.{_div}\n", true);
 }
 
 /// @ignore
