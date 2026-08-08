@@ -102,7 +102,7 @@ RoomLoader.Origin(0.5, 0.5).Load(rmExample, x, y); // [!code highlight]
 ---
 ### Presets
 
-For convenience, GMRoomLoader provides a set of built-in origin presets. These are shorthand methods with common values mimicking the GameMaker's sprite origin presets layout, so the pattern should feel immediately familiar.
+For convenience, GMRoomLoader provides a set of built-in origin presets. These are shorthand methods with common values mimicking GameMaker's sprite origin presets layout, so the pattern should feel immediately familiar.
 
 The goal with these is readability: the methods create a natural English-like flow in code. Instead of raw numbers, you can write what you mean (almost) directly, e.g. "load the room at the top right" or "get a centered screenshot".
 
@@ -138,7 +138,7 @@ Sets the Flags to use in the next :Loading: or :Screenshotting: call. Check out 
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `flags` | :Real: | The flags (ROOMLOADER_FLAG_\<NAME\>) used to filter which asset types are loaded or screenshotted |
+| `flags` | :Real: | The :Flags: (ROOMLOADER_FLAG_\<NAME\>) used to filter which asset types are loaded or screenshotted |
 
 :::code-group
 ```js [Example]

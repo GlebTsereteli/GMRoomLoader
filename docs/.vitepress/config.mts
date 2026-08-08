@@ -4,9 +4,12 @@ import MarkdownIt from 'markdown-it'
 export default defineConfig({
   base: '/GMRoomLoader/',
   cleanUrls: true,
-
   ignoreDeadLinks: true,
   lastUpdated: true,
+
+  sitemap: {
+    hostname: 'https://glebtsereteli.github.io/GMRoomLoader/'
+  },
 
   title: "GMRoomLoader",
   description: "GMRoomLoader Documentation",
@@ -57,17 +60,16 @@ export default defineConfig({
               { text: 'What is GMRoomLoader?', link: '/pages/home/whatIsIt' },
               { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
               { text: 'Demos & Tutorials', link: '/pages/home/demosTutorials/demosTutorials' },
-              { text: 'FAQ', link: '/pages/home/faq' },
             ]
           },
           {
-            text: '🗂️ Others',
+            text: '🙋‍♂️ Help',
             items: [
-              { text: 'Contact & Support', link: '/pages/others/contactSupport' },
-              { text: 'Upcoming Features', link: '/pages/others/upcomingFeatures' },
-              { text: 'Credits', link: '/pages/others/credits' },
+              { text: 'FAQ', link: '/pages/help/faq' },
+              { text: 'Troubleshooting', link: '/pages/help/troubleshooting' },
+              { text: 'Contact & Support', link: '/pages/help/contactSupport' },
             ]
-          }
+          },
         ]
       },
       { 
@@ -115,7 +117,16 @@ export default defineConfig({
           { text: 'What is GMRoomLoader?', link: '/pages/home/whatIsIt' },
           { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
           { text: 'Demos & Tutorials', link: '/pages/home/demosTutorials/demosTutorials' },
-          { text: 'FAQ', link: '/pages/home/faq' },
+        ]
+      },
+      {
+        text: '🙋‍♂️ Help',
+        link: '/pages/help/faq',
+        collapsed: false,
+        items: [
+          { text: 'FAQ', link: '/pages/help/faq' },
+          { text: 'Troubleshooting', link: '/pages/help/troubleshooting' },
+          { text: 'Contact & Support', link: '/pages/help/contactSupport' },
         ]
       },
       {
@@ -149,16 +160,6 @@ export default defineConfig({
           { text: 'Debug View', link: '/pages/api/debugView/debugView', },
           { text: 'Configuration', link: '/pages/api/config' },
         ]
-      },
-      {
-          text: '🗂️ Others',
-          link: '/pages/others/contactSupport',
-          collapsed: false,
-          items: [
-            { text: 'Contact & Support', link: '/pages/others/contactSupport' },
-            { text: 'Upcoming Features', link: '/pages/others/upcomingFeatures' },
-            { text: 'Credits', link: '/pages/others/credits' },
-          ]
       },
     ],
     
@@ -230,7 +231,8 @@ export default defineConfig({
         // Links
         'New Issue': 'https://github.com/glebtsereteli/GMRoomLoader/issues/new',
         'Debug Overlay': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm',
-        
+        'Instance Creation Order': 'https://manual.gamemaker.io/lts/en/The_Asset_Editors/Room_Properties/Room_Properties.htm#:~:text=to%20the%20room.-,Instance%20Creation%20Order,-The%20final%20button',
+
         'RoomLoader': '/pages/api/roomLoader/overview',
         'Origin': '/pages/api/roomLoader/origin',
         'Payload': '/pages/api/payload/overview',
@@ -299,6 +301,21 @@ export default defineConfig({
         'Part': '/pages/api/roomLoader/state#part',
         'Part()': '/pages/api/roomLoader/state#part',
         '.Part()': '/pages/api/roomLoader/state#part',
+
+        // Flags
+
+        'ROOMLOADER_FLAG_NONE': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_INSTANCES': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_TILEMAPS': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_SPRITES': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_SEQUENCES': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_PARTICLES': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_TEXTS': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_BACKGROUNDS': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_EFFECTS': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_CORE': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_EXTENDED': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
+        'ROOMLOADER_FLAG_ALL': '/pages/api/roomLoader/assetTypeFiltering#roomloader-flag-macros',
       }
 
       md.inline.ruler.before('link', 'shortcuts', (state, silent) => {

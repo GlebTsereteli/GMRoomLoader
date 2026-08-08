@@ -30,7 +30,7 @@ If you're not a fan of bitwise operations, see the alternative way to filter by 
 | `ROOMLOADER_FLAG_BACKGROUNDS` | Loads Backgrounds from Background layers |
 | `ROOMLOADER_FLAG_EFFECTS` | Loads Effect layers and on-layer Effects |
 | `ROOMLOADER_FLAG_CORE` | Includes `ROOMLOADER_FLAG_INSTANCES`, `ROOMLOADER_FLAG_SPRITES` and `ROOMLOADER_FLAG_TILEMAPS` |
-| `ROOMLOADER_FLAG_EXTENDED` | Includes `ROOMLOADER_FLAG_SEQUENCES`, `ROOMLOADER_FLAG_TEXTS`, `ROOMLOADER_FLAG_BACKGROUNDS` and `ROOMLOADER_FLAG_EFFECTS` |
+| `ROOMLOADER_FLAG_EXTENDED` | Includes `ROOMLOADER_FLAG_SEQUENCES`, `ROOMLOADER_FLAG_PARTICLES`, `ROOMLOADER_FLAG_TEXTS`, `ROOMLOADER_FLAG_BACKGROUNDS` and `ROOMLOADER_FLAG_EFFECTS` |
 | `ROOMLOADER_FLAG_ALL` | Includes all asset types (`ROOMLOADER_FLAG_CORE` + `ROOMLOADER_FLAG_EXTENDED`). Used by default via the :ROOMLOADER_DEFAULT_FLAGS: config macro |
 
 :::code-group
@@ -38,7 +38,7 @@ If you're not a fan of bitwise operations, see the alternative way to filter by 
 // Loads rmLevelCastle01's Tilemaps centered
 RoomLoader.Load(rmLevelCastle01, x, y, 0.5, 0.5, ROOMLOADER_FLAG_TILEMAPS); // [!code highlight]
 
-// Loads rmLevelMaze11's Instances and Tilemaps
+// Loads rmMaze11's Instances and Tilemaps
 var _flags = ROOMLOADER_FLAG_INSTANCES | ROOMLOADER_FLAG_TILEMAPS; // [!code highlight]
 RoomLoader.Load(rmMaze11, x, y, 0, 0, _flags);
 
@@ -50,7 +50,7 @@ RoomLoader.Load(rmLevelRoof, x, y, 0, 0, _flags);
 // Loads rmLevelCastle01's Tilemaps centered
 RoomLoader.MiddleCenter().Tilemaps().Load(rmLevelCastle01, x, y); // [!code highlight]
 
-// Loads rmLevelMaze11's Instances and Tilemaps
+// Loads rmMaze11's Instances and Tilemaps
 RoomLoader.Instances().Tilemaps().Load(rmMaze11, x, y); // [!code highlight]
 
 // Loads rmLevelRoof with flags set to All BUT Sequences

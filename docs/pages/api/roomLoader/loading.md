@@ -26,7 +26,7 @@ Try loading the same room with and without transformations to see the difference
 
 Loads all layers and elements of the given room at the given coordinates, with optional :Origin:, :Asset Type: filtering, :Scaling: and :Rotation:.
 
---- 
+---
 
 #### Layers
 
@@ -46,6 +46,10 @@ Need to adjust layer depths after loading? See the [Payload/Depth](/pages/api/pa
 * Otherwise returns :Undefined:.
 
 ---
+
+::: warning ❗ INSTANCE CREATION ORDER
+Unlike regular GameMaker rooms or [.LoadInstances()](#loadinstances), this method does not guarantee that :Instance Creation Order: is preserved. See the [edge case](#instance-creation-order) below for more details.
+:::
 
 ::: details ℹ️ ROOM ELEMENT COVERAGE {closed}
 Full room loading supports the following elements.
@@ -147,7 +151,7 @@ Loads all instances from the given room at the given coordinates, with optional 
 
 Unlike :Full Room Loading:, all instances are placed onto the specified layer (or depth) instead of their original room layers.
 
-::: tip CUSTOM LOADING
+::: details ℹ️ CUSTOM LOADING
 If you'd like to handle instance creation yourself rather than using GMRoomLoader's built-in method, call [RoomLoader.DataGetInstances()](/pages/api/roomLoader/data/#datagetinstances) to retrieve an array of instance data and apply your own logic to it.
 :::
 
@@ -249,7 +253,7 @@ This process can noticeably impact performance, especially for large tilemaps. T
 | `[targetLayer]` | :Id.Layer: or :String: | The target layer to create the tilemap on [Default: `sourceLayerName`] |
 | `[xOrigin]` | :Real: | The x origin to load the tilemap at <br> [Default: :State.XOrigin: if set, or :ROOMLOADER_DEFAULT_XORIGIN:] |
 | `[yOrigin]` | :Real: | The y origin to load the tilemap at <br> [Default: :State.YOrigin: if set, or :ROOMLOADER_DEFAULT_YORIGIN:] |
-| `[mirror]` | :Bool: | Mirror the loaded tilemap? <br> [Default: (:State.XScale: `< 0`): if set, `false` otherwise] |
+| `[mirror]` | :Bool: | Mirror the loaded tilemap? <br> [Default: (:State.XScale: `< 0`) if set, `false` otherwise] |
 | `[flip]` | :Bool: | Flip the loaded tilemap? <br> [Default: (:State.YScale: `< 0`) if set, `false` otherwise] |
 | `[angle]` | :Real: | The angle to load the tilemap at <br> [Default: :State.Angle: if set, or `0`] |
 | `[tileset]` | :Asset.GMTileset: | The tileset to use for the tilemap <br> [Default: :State.Tileset: if set, or source tileset] |
@@ -311,12 +315,40 @@ collisionTilemap = RoomLoader
 
 ### Variable Definitions
 
-While using instance [Variable Definitions](https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Object_Variables.htm) is [fully supported](/pages/home/faq#my-rooms-have-instances-with-variable-definitions-and-creation-code-does-gmroomloader-support-those), not all built-in instance variables can be used as values inside the Variable Definitions panel (e.g. you can't reference `x` or `y`).
+While using instance [Variable Definitions](https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Object_Variables.htm) is [fully supported](/pages/help/faq#my-rooms-have-instances-with-variable-definitions-and-creation-code-does-gmroomloader-support-those), [built-in instance variables](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Instances/Instance_Variables/Instance_Variables.htm) can't be used as values inside the Variable Definitions panel (e.g. you can't reference `x`, `y`, or `image_number`).
 
-This is because GMRoomLoader initializes VarDefs *before* the instance itself exists. All provided variables are baked into a preCreate struct, which is later passed to the created instance. Since the instance does not yet exist at that point, built-in variables are inaccessible.
+---
 
-If you need to use values that aren't accessible at that stage, either set a default value (like `undefined`) and resolve it in the Create event, or use Instance Creation Code instead (keep in mind that it runs *after* the Create event).
+This is because GMRoomLoader initializes VarDefs *before* the instance itself exists. All provided variables are baked into a preCreate struct, which is later passed to the created instance. Since the instance doesn't yet exist at that time, built-in variables are unavailable.
+
+If you need values that aren't accessible at that stage, you can:
+- Set a default value (like `undefined`) and resolve it in the Create event.
+- Use Instance Creation Code (keep in mind that it runs *after* the Create event).
 
 :::tip
-This only applies to VarDefs you've modified in the room editor. Default values aren't included in the data returned by :room_get_info():, so GMRoomLoader doesn't load them and they initialize normally. Because of that, all built-in variables are safe to use when the definition is left at its default value.
+This only applies to VarDefs you've modified in the room editor. Default values aren't included in the data returned by :room_get_info():, so GMRoomLoader doesn't load them and they initialize normally. This makes built-in variables safe to use when the definition is left at its default value.
 :::
+
+### Instance Creation Order
+
+Unlike when working with regular GameMaker rooms or loading instances via [.LoadInstances()](#loadinstances), [.Load()](#load) does not guarantee that :Instance Creation Order: is preserved.
+
+---
+
+Instances are packed by layer internally, so the order they're created in may differ from the order they'd be created in when entering a room normally.
+
+If a loaded room contains a controller instance that depends on other loaded instances already existing, move that logic into a method on the controller (e.g. `.OnLoad()`), get the controller via [.GetInstance()](/pages/api/payload/getters#getinstance) or [.GetInstances()](/pages/api/payload/getters#getinstances), and call the method after loading.
+
+```js
+// Grab a specific instance by its room ID
+var _payload = RoomLoader.Load(rmLevel, x, y);
+var _controller = _payload.GetInstance(inst_183F5946); // [!code highlight]
+_controller.OnLoad(); // [!code highlight]
+
+// Or grab it by object index if you have many controllers in different rooms
+var _payload = RoomLoader.Load(rmLevel, x, y);
+var _controllers = _payload.GetInstances(objLevelController); // [!code highlight]
+_controllers[0].OnLoad(); // [!code highlight]
+```
+
+This may change in a future version.

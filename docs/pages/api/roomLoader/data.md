@@ -83,7 +83,7 @@ Initializes data for all rooms with the given tag assigned. Returns an array of 
 
 | Parameter | Type | Description |
 |---|---|---|
-| `tag` | :String: | The tag to parse rooms from |
+| `tag` | :String: | The tag to extract rooms from |
 
 ::: code-group
 ```js [Example]
@@ -182,7 +182,7 @@ Removes data for all rooms with the given tag.
 
 | Parameter | Type | Description |
 |---|---|---|
-| `tag` | :String: | The tag to parse rooms from |
+| `tag` | :String: | The tag to extract rooms from |
 
 ::: code-group
 ```js [Example]
@@ -234,7 +234,7 @@ Returns the width of the given room.
 
 | Parameter | Type | Description |
 |---|---|---|
-| `room` | :Asset.GMRoom: | The room to get the width of  |
+| `room` | :Asset.GMRoom: | The room to get the width of |
 
 :::code-group
 ```js [Example]
@@ -252,7 +252,7 @@ Returns the height of the given room.
 
 | Parameter | Type | Description |
 |---|---|---|
-| `room` | :Asset.GMRoom: | The room to get the height of  |
+| `room` | :Asset.GMRoom: | The room to get the height of |
 
 :::code-group
 ```js [Example]

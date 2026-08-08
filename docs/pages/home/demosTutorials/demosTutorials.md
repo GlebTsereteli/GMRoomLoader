@@ -1,20 +1,10 @@
 # Demos & Tutorials
 
-<!-- <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px;">
-  <iframe 
-    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen
-    style="position: absolute; top:0; left:0; width:100%; height:100%;">
-  </iframe>
-</div> -->
-
 ## First Setup
 
 As mentioned in the [First Setup](/pages/home/gettingStarted/gettingStarted/#first-setup) section of [Getting Started](/pages/home/gettingStarted/gettingStarted), this is a simple project demonstrating how to load a room centered at the mouse coordinates when pressing 1 and unload it when pressing 2.
 
-> ℹ️ Download the [GMRoomLoader First Setup.yyz](https://github.com/glebtsereteli/GMRoomLoader/releases/latest/download/GMRoomLoader.First.Setup.yyz) example project.
+> ℹ️ Download the [GMRoomLoader First Setup.yyz](https://github.com/glebtsereteli/GMRoomLoader/releases/latest/download/GMRoomLoader.v3.1.1.First.Setup.yyz) example project.
 
 <div style="width: 100%; max-width: 100%;">
   <video style="width: 100%; height: auto;" controls>
@@ -22,11 +12,43 @@ As mentioned in the [First Setup](/pages/home/gettingStarted/gettingStarted/#fir
   </video>
 </div>
 
+## Tutorials
+
+### Spelunky Dungeon
+
+[Procedural Level Generation](https://www.youtube.com/watch?v=gUlcha0e7Hg) by [Pixelated Pope](https://www.youtube.com/@PixelatedPope) and yours truly, on the official GameMaker channel. Jon builds a Spelunky-style procedural dungeon, carving a path of hand-crafted rooms loaded at runtime with GMRoomLoader.
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px;">
+  <iframe 
+    src="https://www.youtube.com/embed/gUlcha0e7Hg"
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen
+    style="position: absolute; top:0; left:0; width:100%; height:100%;">
+  </iframe>
+</div>
+
+---
+
+### Simultaneous Rooms
+
+[GMRoomLoader: Simultaneous Room Loading in GameMaker](https://www.youtube.com/watch?v=mZegvOC47dw) by [DragoniteSpam](https://www.youtube.com/c/DragoniteSpam/about). Michael introduces GMRoomLoader basics and goes over a few interesting edge cases.
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px;">
+  <iframe 
+    src="https://www.youtube.com/embed/mZegvOC47dw"
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen
+    style="position: absolute; top:0; left:0; width:100%; height:100%;">
+  </iframe>
+</div>
+
 ## Demo Project
 
 GMRoomLoader comes with a demo project showcasing all core features of the library. The demo includes a DBG ImGui control panel with demo cycling and custom controls for each example.
 
-> ℹ️ Download the [GMRoomLoader Demo.yyz](https://github.com/glebtsereteli/GMRoomLoader/releases/latest/download/GMRoomLoader.Demo.yyz) project.
+> ℹ️ Try it live on [itch.io](https://glebtsereteli.itch.io/gmroomloader) or download the [GMRoomLoader Demo.yyz](https://github.com/glebtsereteli/GMRoomLoader/releases/latest/download/GMRoomLoader.v3.1.1.Demo.yyz) project.
 
 ---
 ### General
@@ -64,7 +86,9 @@ This is an example of using :RoomLoader.LoadTilemap(): to load Tilemaps, with co
 ---
 ### Merge Tilemaps
 
-This is an example of merging existing and loaded tilemaps when loading :Full Rooms: or :Tilemaps:. The existing tilemap is repositioned and resized to fit loaded tilemaps. See the :ROOMLOADER_MERGE_TILEMAPS: config macro for detailed info.
+This is an example of merging existing and loaded tilemaps when loading :Full Rooms: or :Tilemaps:. The existing tilemap is repositioned and resized to fit loaded tilemaps.
+
+See :ROOMLOADER_MERGE_LAYERS: and :ROOMLOADER_MERGE_TILEMAPS: config macros for more info.
 
 <div style="width: 100%; max-width: 100%;">
   <video style="width: 100%; height: auto;" controls>
@@ -92,18 +116,4 @@ This is an example of an enemy base composed of multiple "Room Slots", each fill
   <video style="width: 100%; height: auto;" controls>
     <source src="/pages/home/demosTutorials/demo06base.mp4" type="video/mp4">
   </video>
-</div>
-
-## Tutorials
-
-* [GMRoomLoader: Simultaneous Room Loading in GameMaker](https://www.youtube.com/watch?v=mZegvOC47dw) by [DragoniteSpam](https://www.youtube.com/c/DragoniteSpam/about). Michael introduces GMRoomLoader basics and goes over a few interesting edge cases.
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px;">
-  <iframe 
-    src="https://www.youtube.com/embed/mZegvOC47dw"
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen
-    style="position: absolute; top:0; left:0; width:100%; height:100%;">
-  </iframe>
 </div>

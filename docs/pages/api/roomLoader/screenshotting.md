@@ -27,7 +27,7 @@ When you need to capture screenshots for many rooms, it's a good idea to use [.S
 Takes a screenshot of the given room and returns it as a sprite. If specified, assigns the optional :Origin: to the created sprite, filters captured asset types by the given :Flags:, and applies the optional :Scale:.
 
 ::: warning
-This method returns a :Asset.GMSprite: created by [sprite_create_from_surface()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_create_from_surface.htm).
+This method returns an :Asset.GMSprite: created by [sprite_create_from_surface()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_create_from_surface.htm).
 Make sure to keep track of it and delete it using [sprite_delete()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_delete.htm) when it's no longer needed.
 :::
 
@@ -66,7 +66,7 @@ screenshot = RoomLoader.Scale(0.5).ScreenshotSprite(rmExample); // [!code highli
 Takes a screenshot of the given room and returns it as a surface. If specified, filters captured asset types by the given :Flags: and scales the output surface.
 
 ::: warning
-This method returns a :Id.Surface: created by [surface_create()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Drawing/Surfaces/surface_create.htm).
+This method returns an :Id.Surface: created by [surface_create()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Drawing/Surfaces/surface_create.htm).
 Make sure to keep track of them and free them using [surface_free()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Drawing/Surfaces/surface_free.htm) when they're no longer needed.
 
 Also keep in mind that surfaces are volatile and don't persist in memory forever - see the [Surface Rules](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Drawing/Surfaces/Surfaces.htm#:~:text=surface_free(surf)%3B-,Surface%20Rules,-Normal%20surfaces%20are) section in the docs.

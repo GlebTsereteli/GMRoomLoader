@@ -98,7 +98,7 @@ RoomLoader.LayerWhitelistSet(_whitelist); // [!code highlight]
 
 > `RoomLoader.LayerWhitelistReset()` ➜ :Struct:.:RoomLoader:
 
-Resets the Whitelist layer filter by removing all names from it.
+Resets the Whitelist layer filter by removing all previously added layer names.
 
 ::: code-group
 ```js [Example]

@@ -6,13 +6,23 @@ This page walks you through installing and setting up GMRoomLoader in your GameM
 
 We'll begin by importing the `.yymps` package. Then in the [First Setup](#first-setup) section, we'll go through core library operations with [Initialization](#_1-initialize), [Loading](#_2-load), and [Cleanup](#_3-clean-up). By the end, you'll have a simple working example that lets you load and unload rooms in real time.
 
+Let's get started!
+
+:::tip ℹ️ SEE IT IN ACTION
+For a hands-on look at GMRoomLoader in a real game scenario, check out [Pixelated Pope](https://www.youtube.com/c/PixelatedPope)'s procedural Spelunky dungeon tutorial on the official GameMaker YouTube channel.
+
+<div style="position:relative;width:100%;padding-top:56.25%;">
+  <iframe src="https://www.youtube.com/embed/gUlcha0e7Hg" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="YouTube video player" frameborder="0" allow="accelerated-encoding; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+:::
+
 ## Requirements
 
 * GameMaker version [LTS 2026](https://gamemaker.io/en/download).
 * Basic familiarity with GameMaker and GML, including:
     * Asset types (rooms, objects, scripts, sprites, tilemaps, etc).
     * Working with objects and events.
-    * Structs, functions/methods and arguments, macros. 
+    * Structs, functions/methods and macros.
 
 ## Installation
 1. Download the `.yymps` local package from the latest [Release](https://github.com/glebtsereteli/GMRoomLoader/releases/latest).
@@ -24,17 +34,18 @@ We'll begin by importing the `.yymps` package. Then in the [First Setup](#first-
     ![](import02.png)
     * Click __Import__.
     ![](import03.png)
-        > The whole library lives inside the `GMRoomLoader` folder, and the only file under `Included Files` is the [MIT license](/pages/home/faq/#how-is-gmroomloader-licensed-can-i-use-it-in-commercial-projects).
+        > The whole library lives inside the `GMRoomLoader` folder, and the only file under `Included Files` is the [MIT license](/pages/help/faq/#how-is-gmroomloader-licensed-can-i-use-it-in-commercial-projects).
 3. You're good to go! Next, check out the [First Setup](#first-setup) section below to load your first room.
 
 :::tip UPDATING
-If you already have GMRoomLoader installed and want to update to the latest version, check the [Updating](/pages/home/faq/#updating) FAQ entry for instructions.
+If you already have GMRoomLoader installed and want to update to the latest version, check the [Updating](/pages/help/faq/#updating) FAQ entry for instructions.
 :::
 ## First Setup
 While GMRoomLoader offers many tools for handling room data, loading rooms and working with created elements, the following :Initialization:, :Loading: and :Cleanup: methods are all you need to get things working and load your first room!
 
 We'll go over each step first and then bring them all together in a simple, complete example.
 
+---
 ### 1. Initialize
 [Initialize](/pages/api/roomLoader/data/#initialization) the data for the room you want to load.
 ```js
@@ -48,6 +59,7 @@ Data initialization is optional and happens automatically when needed. Skipping 
 **However**, when it comes to larger rooms or dealing with many rooms at the same time, **it is still recommended to initialize data beforehand**. See the :Initialization: page to learn about best performance practices.
 :::
 
+---
 ### 2. Load
 [Load](/pages/api/roomLoader/loading/#load) the room at the mouse position and store the returned :Payload: instance in a variable to clean up later.
 ```js
@@ -55,12 +67,14 @@ payload = RoomLoader.Load(rmExample, mouse_x, mouse_y);
 ```
 This can be called right after initialization in the Create event, or on a key press to see the room load in real time.
 
+---
 ### 3. Clean Up
 [Clean Up](/pages/api/payload/cleanup) the loaded room when needed by destroying all loaded layers and elements. Often called "unloading" or "destroying" the loaded room.
 ```js
 payload.Cleanup();
 ```
 
+---
 ### 4. All Together
 Now that we know the required steps, let's put it all together in a simple working example. We'll do this in our object responsible for loading rooms.
 
@@ -93,8 +107,6 @@ if (keyboard_check_pressed(ord("2"))) {
 ```
 :::
 
-> ℹ️ Download the [GMRoomLoader First Setup.yyz](https://github.com/glebtsereteli/GMRoomLoader/releases/latest/download/GMRoomLoader.First.Setup.yyz) example project to see this in action.
-
 <div style="width: 100%; max-width: 100%;">
   <video style="width: 100%; height: auto;" controls>
     <source src="/pages/home/gettingStarted/firstSetup.mp4" type="video/mp4">
@@ -102,10 +114,15 @@ if (keyboard_check_pressed(ord("2"))) {
   </video>
 </div>
 
+> ℹ️ Download the [GMRoomLoader First Setup.yyz](https://github.com/glebtsereteli/GMRoomLoader/releases/latest/download/GMRoomLoader.v3.1.1.First.Setup.yyz) example project to see this in action.
+
+## Something Not Working?
+If you loaded a room in your own project but <u>**can't see it**</u>, or the screen <u>**turns black**</u>, check the [Troubleshooting](/pages/help/troubleshooting) page. Both issues are super common and really quick to fix.
+
+Still stuck, or have a question Troubleshooting doesn't answer? Check the [FAQ](/pages/help/faq), then head to [Contact & Support](/pages/help/contactSupport) to ask directly or report a bug.
+
 ## What's Next?
 
 That's it for the basic setup! To learn more, check out:
-* The [FAQ](/pages/home/faq) page to find answers to common questions.
-* The [Demos & Tutorials](/pages/home/demosTutorials/demosTutorials) page to learn about available demos and tutorials.
+* The [Demos & Tutorials](/pages/home/demosTutorials/demosTutorials) page for video tutorials and demo projects covering the library in practice.
 * The [API](/pages/api/overview) section to explore all available methods.
-* The __Others__ section for [Contact & Support](/pages/others/contactSupport), [Upcoming Features](/pages/others/upcomingFeatures) and [Credits](/pages/others/credits).

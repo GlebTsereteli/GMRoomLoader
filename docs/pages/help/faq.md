@@ -24,7 +24,7 @@ GMRoomLoader is licensed under the [MIT license](https://github.com/glebtseretel
 
 Mentioning my name (Gleb Tsereteli) in your game's credits would be greatly appreciated and would totally make my day, but it's entirely optional 🙂
 
-## How is GMRoomLoader versioned?   
+## How is GMRoomLoader versioned?
 GMRoomLoader follows [Semantic Versioning](https://semver.org/) using the `vMAJOR.MINOR.PATCH` format, where:
 * **MAJOR** increases when incompatible API changes are introduced. Updating to a new major version may require you to update your code.
 * **MINOR** increases when new features are added in a backward-compatible way, so it's always safe to update.
@@ -43,27 +43,22 @@ GMRoomLoader follows [Semantic Versioning](https://semver.org/) using the `vMAJO
 No. GMRoomLoader is designed specifically for loading rooms. Procedural generation, along with any custom logic for determining which room to pick and where it should go, will need to be handled on your own.
 
 ## When should I NOT use GMRoomLoader?
-If your game only ever shows a single room at a time, like a Binding of Isaac-style dungeon, regular room switching is all you need. Your procedural logic for deciding which room comes next can run entirely in the background without GMRoomLoader.
-
 GMRoomLoader shines when multiple rooms need to coexist in the same space at runtime: chunked open worlds, Spelunky-style dungeons assembled from templates, and similar setups where room contents need to be combined without switching rooms.
+
+If your game only ever shows a single room at a time, like a Binding of Isaac-style dungeon, regular room switching is likely all you need. Your procedural logic for deciding which room comes next can run entirely in the background without GMRoomLoader.
 
 ## Can GMRoomLoader be used with 3D, isometric, sprite stacking, or other non-standard rendering setups?
 Yes. GMRoomLoader has nothing to do with rendering; it loads room contents. As long as your rendering setup works in a regular room and you design your content in rooms, it will work just as well when loading them with GMRoomLoader.
 
 ## Can GMRoomLoader be used for modding? Is live reloading supported?
-No. GMRoomLoader retrieves data from :room_get_info():, which only provides access to room information initialized at compile time. This means that at runtime, you can only access rooms exactly as they existed when the game was compiled. 
+No. GMRoomLoader retrieves data from :room_get_info():, which only provides access to room information initialized at compile time. This means that at runtime, you can only access rooms exactly as they existed when the game was compiled.
 
 As a result, modding and live reloading aren't possible by design.
 
 If any of this is essential for your project, consider buying [GMRoomPack by YellowAfterlife](https://yellowafterlife.itch.io/gmroompack), the OG library that inspired GMRoomLoader. It works directly with room `.yy` files, which allows for both modding and rather trivial live reloading.
 
-## I'm loading a room and I think it works, but I can't see some (or all) of the loaded elements. How can I fix that?
-Mind your depth! GMRoomLoader creates layers at the exact depths assigned in the Room Editor. If your host room has existing layers, make sure to manage depths so loaded layers appear either in front of or behind them, depending on your use case.
-
-The good news is layer depths are easily adjustable and you're not stuck with the default depths from the loaded room. Check out the [Payload Depth](/pages/api/payload/depth) section to see how you can shift depths for loaded layers.
-
 ## My rooms have instances with Variable Definitions and Creation Code. Does GMRoomLoader support those?
-It does! :room_get_info(): provides both as scripts for GMRoomLoader to use. 
+It does! :room_get_info(): provides both as scripts for GMRoomLoader to use.
 
 ::: info NOTE
 The execution order follows GameMaker's default and is structured like this:
@@ -72,7 +67,7 @@ The execution order follows GameMaker's default and is structured like this:
 3. Creation Code.
 :::
 
-## Can I unload or destroy a loaded room?
+## Can I unload a loaded room?
 Yes, and it's an essential part of the workflow! The way you do it depends on what was loaded: [Full Rooms](/pages/api/roomLoader/loading/#full-rooms), [Instances](/pages/api/roomLoader/loading/#loadinstances) or [Tilemaps](/pages/api/roomLoader/loading/#loadtilemap). Each case is described below.
 
 ### Full Rooms
@@ -124,33 +119,3 @@ tilemap = RoomLoader.LoadTilemap(rmExample, x, y, "Tiles");
 layer_tilemap_destroy(tilemap); // [!code highlight]
 ```
 :::
-
-## How can I collide with loaded tilemaps?
-
-### Separate
-When you load a room with a tile layer (with :ROOMLOADER_MERGE_LAYERS: and :ROOMLOADER_MERGE_TILEMAPS: set to `false`), a new tilemap is created.
-
-To collide with this newly loaded tilemap, you need to grab its ID and store it in some variable. If you're currently colliding with, say, a variable holding a tilemap ID, you'll need to change that to a dynamic setup using an array.
-
-::: code-group
-```js [Example]
-// In some script, initialize a global array of collision tilemaps
-global.collisionTilemaps = [];
-
-// On Room Start (or somewhere else, if relevant), fetch your baseline collision tilemap ID
-global.collisionTilemaps = [layer_tilemap_get_id("CollisionTilemap")];
-
-// When loading a room, grab the collision tilemap ID and push it to the global collision tilemaps array
-payload = RoomLoader.Load(rmExample, x, y);
-collisionTilemap = payload.GetTilemap("CollisionTilemap");
-array_push(global.collisionTilemaps, collisionTilemap);
-
-// When unloading a room, remove the collision tilemap from the global collision tilemaps array
-var _index = array_get_index(global.collisionTilemaps, collisionTilemap);
-array_delete(global.collisionTilemaps, _index, 1);
-payload.Cleanup();
-```
-:::
-
-### Merged
-Alternatively, you can make use of :ROOMLOADER_MERGE_LAYERS: and :ROOMLOADER_MERGE_TILEMAPS: to merge loaded tilemaps into existing ones. That way you don't need to juggle multiple tilemap IDs and can keep using a single tilemap for collision, auto-tiling or any other needs where having a single tilemap is preferable.

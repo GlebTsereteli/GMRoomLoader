@@ -7,7 +7,7 @@ This page covers GMRoomLoader's configuration macros, found in the `RoomLoaderCo
 The defaults work well for most projects, so you only need to change them when you have a specific need.
 
 ::: tip UPDATING
-If you've customized any of these configs and are updating to a new version of GMRoomLoader, make sure to back them up first. See the [Updating](/pages/home/faq#updating) FAQ entry for instructions.
+If you've customized any of these configs and are updating to a new version of GMRoomLoader, make sure to back them up first. See the [Updating](/pages/help/faq#updating) FAQ entry for instructions.
 :::
 
 ## General
@@ -54,9 +54,9 @@ Layers reused for merging are not tracked by :Payload: and will not be destroyed
 
 Whether loaded tilemaps should be merged into existing tilemaps (`true`) or not (`false`).
 * This triggers if an existing tilemap is present on a layer with the same name as the loaded layer.
+* Merging is only possible if both tilemaps use the same tileset.
 * The existing tilemap will be repositioned and resized to fit the loaded tilemap.
 * When loading full rooms via :RoomLoader.Load():, :ROOMLOADER_MERGE_LAYERS: must be set to `true` for this to work.
-* Merging is only possible if both tilemaps use the same tileset.
 
 ---
 ### `ROOMLOADER_DELIVER_PAYLOAD`
