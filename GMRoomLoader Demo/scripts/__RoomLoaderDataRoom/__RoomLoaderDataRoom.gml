@@ -3,6 +3,7 @@
 function __RoomLoaderDataRoom(_room) constructor {
 	__room = _room;
 	__layersPool = [];
+	__layersLut = {};
 	__instancesPool = [];
 	__instancesInitLut = {};
 	__tilemapsLut = {};
@@ -102,6 +103,7 @@ function __RoomLoaderDataRoom(_room) constructor {
 			if (_layer != undefined) {
 				_layer.__Init();
 				array_push(__layersPool, _layer);
+				__layersLut[$ _layerData.name] = _layer;
 			}
 			
 			_i++;

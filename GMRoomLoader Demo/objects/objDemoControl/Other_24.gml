@@ -50,10 +50,9 @@ RefreshInterface = function() {
 	dbg_button("Itch", function() { url_open("https://glebtsereteli.itch.io/gmroomloader"); }, _w, _size);
 };
 Change = function(_index) {
-	_index = Mod2(_index, n);
 	reloader.Clear();
 	GetCurrent().Cleanup();
-	index = _index;
+	index = Mod2(_index, n);
 	prevIndex = index;
 	
 	RefreshInterface();

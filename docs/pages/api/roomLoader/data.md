@@ -290,16 +290,17 @@ RoomLoader.LayerWhitelistReset();
 ---
 ### `.DataGetInstances()`
 
-> `RoomLoader.DataGetInstances(room, [object])` ➜ :Array: of :Struct:
+> `RoomLoader.DataGetInstances(room, [object], [layerName])` ➜ :Array: of :Struct:
 
 Returns an array of instance data structs from the given room. See the format listed [below](#struct-format).
 
-You can also provide the optional `[object]` argument to return data only for instances of the given object.
+You can narrow the results with the optional `[object]` and `[layerName]` arguments. Provide `[object]` to return data only for instances of the given object, `[layerName]` to return data only for instances on the given layer, or both together to combine the two filters.
 
 | Parameter | Type | Description |
 |---|---|---|
 | `room` | :Asset.GMRoom: | The room to get an array of instance data from |
 | `[object]` | :Asset.GMObject: | The object to filter instances by. Only instances of the given object will be included [Default: `undefined` (no filter)] |
+| `[layerName]` | :String: | The layer name to filter instances by. Only instances on the given layer will be included [Default: `undefined` (no filter)] |
 
 :::code-group
 ```js [Custom Instance Creation]
@@ -313,9 +314,13 @@ instances = array_map(_instancesData, function(_instanceData) {
     return _instanceId;
 });
 ```
-```js [Fetching Doors]
+```js [Filtering]
 // Fetches objDoor instance data from rmExample
 var _doorsData = RoomLoader.DataGetInstances(rmExample, objDoor); // [!code highlight]
+// ...
+
+// Fetches objOre instance data from the "Resources" layer in rmMine
+var _oreData = RoomLoader.DataGetInstances(rmMine, objOre, "Resources"); // [!code highlight]
 // ...
 ```
 :::

@@ -264,7 +264,7 @@ function RoomLoader() {
 	/// @returns {Real}
 	/// @self RoomLoader
 	static DataGetWidth = function(_room) {
-		/*@ignore*/ /*@ignore*/ static _methodName = "DataGetWidth";
+		/*@ignore*/ static _methodName = "DataGetWidth";
 		
 		var _data = __GetData(_room, _methodName, "get width for");
 		
@@ -278,7 +278,7 @@ function RoomLoader() {
 	/// @returns {Real}
 	/// @self RoomLoader
 	static DataGetHeight = function(_room) {
-		/*@ignore*/ /*@ignore*/ static _methodName = "DataGetHeight";
+		/*@ignore*/ static _methodName = "DataGetHeight";
 		
 		var _data = __GetData(_room, _methodName, "get height for");
 		
@@ -292,7 +292,7 @@ function RoomLoader() {
 	/// @returns {Array<String>}
 	/// @self RoomLoader
 	static DataGetLayerNames = function(_room) {
-		/*@ignore*/ /*@ignore*/ static _methodName = "DataGetLayerNames";
+		/*@ignore*/ static _methodName = "DataGetLayerNames";
 		
 		var _data = __GetData(_room, _methodName, "get layer names for");
 		
@@ -304,12 +304,17 @@ function RoomLoader() {
 	/// Returns an array of instance data structs.
 	/// See format specifics in the docs: https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#struct-format
 	/// 
+	/// You can narrow the results with the optional [object] and [layerName] arguments.
+	/// Provide [object] to return data only for instances of the given object, [layerName] to return data only for instances on the given layer,
+	/// or both together to combine the two filters.
+	/// 
 	/// @param {Asset.GMRoom} room The room to get instances data from.
 	/// @param {Asset.GMObject} object The object to filter instances by. Only instances of the given object will be included. [Default: undefined (no filter)]
+	/// @param {String} layerName The layer name to filter instances by. Only instances on the given layer will be included. [Default: undefined (no filter)]
 	/// 
 	/// @returns {Array<Struct>}
 	/// @self RoomLoader
-	static DataGetInstances = function(_room, _obj = undefined) {
+	static DataGetInstances = function(_room, _obj = undefined, _layerName = undefined) {
 		/*@ignore*/ static _methodName = "DataGetInstances";
 		/*@ignore*/ static _closure = {};
 		/*@ignore*/ static _Filter = method(_closure, function(_inst) {
@@ -317,9 +322,25 @@ function RoomLoader() {
 		});
 		
 		var _data = __GetData(_room, _methodName, "get instances data from");
-		_closure.__object = _obj;
+		var _pool = _data.__instancesPool;
 		
-		return (is_undefined(_obj) ? variable_clone(_data.__instancesPool) : array_filter(_data.__instancesPool, _Filter));
+		if (_layerName != undefined) {
+			var _layer = _data.__layersLut[$ _layerName];
+			if (_layer == undefined) {
+				__RoomLoaderErrorMethod(__messagePrefix, _methodName, $"Layer \"{_layerName}\" doesn't exist");
+			}
+			if (not is_instanceof(_layer, __RoomLoaderDataLayerInstance)) {
+				__RoomLoaderErrorMethod(__messagePrefix, _methodName, $"Layer \"{_layerName}\" is not an Instance layer");
+			}
+			_pool = _layer.__instances;
+		}
+		
+		if (_obj != undefined) {
+			_closure.__object = _obj;
+			return array_filter(_pool, _Filter);
+		}
+		
+		return variable_clone(_pool);
 	};
 	
 	/// Returns an instance data struct for the given room instance inside the given room.
