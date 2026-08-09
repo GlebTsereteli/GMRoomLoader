@@ -1,5 +1,6 @@
-
 // feather ignore all
+
+/// @ignore
 function __RoomLoaderPayloadContainer(_destroyFunc) constructor {
 	__ids = [];
 	__roomIds = [];
@@ -21,7 +22,9 @@ function __RoomLoaderPayloadContainer(_destroyFunc) constructor {
 		}
 	};
 }
-function __RoomLoaderPayloadInstances() : __RoomLoaderPayloadContainer(instance_destroy) constructor {
+
+/// @ignore
+function __RoomLoaderPayloadInstances() : __RoomLoaderPayloadContainer() constructor {
 	__missingValue = noone;
 	__index = 0;
 	
@@ -41,5 +44,11 @@ function __RoomLoaderPayloadInstances() : __RoomLoaderPayloadContainer(instance_
 		__roomIds = [];
 		
 		return _ids;
+	};
+	static __Destroy = function(_fireDestroyEvents) {
+		var _i = 0; repeat (array_length(__ids)) {
+			instance_destroy(__ids[_i], _fireDestroyEvents);
+			_i++;
+		}
 	};
 }

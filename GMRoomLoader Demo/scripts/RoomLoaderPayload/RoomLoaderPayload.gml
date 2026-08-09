@@ -365,9 +365,11 @@ function RoomLoaderPayload(_room) constructor {
 	/// Destroys all created layers and elements.
 	/// After calling this method, the Payload instance should be dereferenced to be picked up by the Garbage Collector.
 	/// 
+	/// @param {Bool} fireDestroyEvents Whether to fire Destroy events on cleaned up instances. [Default: true]
+	/// 
 	/// @returns {Struct.RoomLoaderPayload}
 	/// @self RoomLoaderPayload
-	static Cleanup = function() {
+	static Cleanup = function(_fireDestroyEvents = true) {
 		static _methodName = "Cleanup";
 		
 		if (__cleanedUp) {
@@ -376,7 +378,7 @@ function RoomLoaderPayload(_room) constructor {
 		}
 		
 		__ROOMLOADER_BENCH_START;
-		__instances.__Destroy();
+		__instances.__Destroy(_fireDestroyEvents);
 		__tilemaps.__Destroy();
 		__sprites.__Destroy();
 		__sequences.__Destroy();

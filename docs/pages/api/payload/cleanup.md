@@ -17,16 +17,31 @@ When [ROOMLOADER_MERGE_LAYERS](/pages/api/config/#roomloader-merge-layers) is en
 
 ## `.Cleanup()`
 
-> `payload.Cleanup()` ➜ :Struct:.:Payload:
+> `payload.Cleanup([fireDestroyEvents])` ➜ :Struct:.:Payload:
 
 Destroys all created layers and their elements. After calling this method, the :Payload: instance should be dereferenced to be picked up by the [Garbage Collector](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Garbage_Collection/Garbage_Collection.htm).
 
+::: tip
+Set `[fireDestroyEvents]` to `false` to skip Destroy events entirely. This is useful if instances have particles, effects or other mechanics tied to their Destroy event that shouldn't fire when unloading the loaded room.
+:::
+
+| Parameter | Type | Description |
+|---|---|---|
+| `[fireDestroyEvents]` | :Bool: | Whether to fire Destroy events on cleaned up instances (`true`) or not (`false`) [Default: `true`] |
+
 :::code-group
-```js [Example]
+```js [Regular]
 // When you load the room
 payload = RoomLoader.Load(rmExample, x, y);
 
 // When it's time to unload the room
 payload.Cleanup(); // [!code highlight]
+```
+```js [Skip Destroy Events]
+// When you load the room
+payload = RoomLoader.Load(rmExample, x, y);
+
+// When it's time to unload the room, without firing Destroy events
+payload.Cleanup(false); // [!code highlight]
 ```
 :::
