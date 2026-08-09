@@ -1,9 +1,11 @@
 // feather ignore all
-// Documentation: https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/overview
 
 /// Main GMRoomLoader interface. Manages room Data, Loading Full Rooms, Instances and Tilemaps, Screenshotting, State management and Layer Name Filtering.
 /// Initialized internally, no additional setup required.
 /// Call public methods using the RoomLoader.MethodName(<arguments>); syntax.
+/// 
+/// @returns {Struct.RoomLoader}
+/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/overview
 function RoomLoader() {
 	#region Data: Initialization
 	
@@ -13,6 +15,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datainit
 	static DataInit = function() {
 		/*@ignore*/ static _methodName = "DataInit";
 		
@@ -30,6 +33,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datainitarray
 	static DataInitArray = function(_rooms) {
 		/*@ignore*/ static _methodName = "DataInitArray";
 		
@@ -49,6 +53,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Array<Asset.GMRoom>}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datainitprefix
 	static DataInitPrefix = function(_prefix) {
 		/*@ignore*/ static _methodName = "DataInitPrefix";
 		/*@ignore*/ static _closure = { __prefix: undefined };
@@ -82,6 +87,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Array<Asset.GMRoom>}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datainittag
 	static DataInitTag = function(_tag) {
 		/*@ignore*/ static _methodName = "DataInitTag";
 		__RoomLoaderCatchString(__messagePrefix, _methodName, _tag);
@@ -108,6 +114,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Array<Asset.GMRoom>}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datainitall
 	static DataInitAll = function(_blacklist = []) {
 		/*@ignore*/ static _methodName = "DataInitAll";
 		/*@ignore*/ static _closure = {};
@@ -137,6 +144,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#dataremove
 	static DataRemove = function() {
 		/*@ignore*/ static _methodName = "DataRemove";
 		
@@ -154,6 +162,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#dataremovearray
 	static DataRemoveArray = function(_rooms) {
 		/*@ignore*/ static _methodName = "DataRemoveArray";
 		
@@ -173,6 +182,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#dataremoveprefix
 	static DataRemovePrefix = function(_prefix) {
 		/*@ignore*/ static _methodName = "DataRemovePrefix";
 		
@@ -204,6 +214,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#dataremovetag
 	static DataRemoveTag = function(_tag) {
 		/*@ignore*/ static _methodName = "DataRemoveTag";
 		
@@ -228,6 +239,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#dataclear
 	static DataClear = function() {
 		/*@ignore*/ static _methodName = "DataClear";
 		
@@ -251,6 +263,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Bool}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#dataisinitialized
 	static DataIsInitialized = function(_room) {
 		__RoomLoaderCatchNonRoom(__messagePrefix, "DataIsInitialized", _room, $"check whether data is initialized for");
 		
@@ -263,6 +276,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Real}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datagetwidth
 	static DataGetWidth = function(_room) {
 		/*@ignore*/ static _methodName = "DataGetWidth";
 		
@@ -277,6 +291,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Real}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datagetheight
 	static DataGetHeight = function(_room) {
 		/*@ignore*/ static _methodName = "DataGetHeight";
 		
@@ -291,6 +306,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Array<String>}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datagetlayernames
 	static DataGetLayerNames = function(_room) {
 		/*@ignore*/ static _methodName = "DataGetLayerNames";
 		
@@ -314,6 +330,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Array<Struct>}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datagetinstances
 	static DataGetInstances = function(_room, _obj = undefined, _layerName = undefined) {
 		/*@ignore*/ static _methodName = "DataGetInstances";
 		/*@ignore*/ static _closure = {};
@@ -351,6 +368,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct,Undefined}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datagetinstance
 	static DataGetInstance = function(_room, _id) {
 		/*@ignore*/ static _methodName = "DataGetInstance";
 		/*@ignore*/ static _closure = {};
@@ -375,6 +393,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/data#datagettilemap
 	static DataGetTilemap = function(_room, _layerName) {
 		/*@ignore*/ static _methodName = "DataGetTilemap";
 		
@@ -407,6 +426,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoaderPayload,Undefined}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/loading#load
 	static Load = function(_room, _x, _y, _xOrigin = __xOrigin, _yOrigin = __yOrigin, _flags = __flags, _xScale = __xScale, _yScale = __yScale, _angle = __angle) {
 		/*@ignore*/ static _methodName = "Load";
 		/*@ignore*/ static _nonRoomMessage = "load";
@@ -442,6 +462,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Array<Id.Instance>}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/loading#loadinstances
 	static LoadInstances = function(_room, _x, _y, _layerOrDepth, _xOrigin = __xOrigin, _yOrigin = __yOrigin, _xScale = __xScale, _yScale = __yScale, _angle = __angle) {
 		/*@ignore*/ static _methodName = "LoadInstances";
 		/*@ignore*/ static _nonRoomMessage = "load instances from";
@@ -524,6 +545,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Id.Tilemap}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/loading#loadtilemap
 	static LoadTilemap = function(_room, _x, _y, _sourceLayerName, _targetLayer = _sourceLayerName, _xOrigin = __xOrigin, _yOrigin = __yOrigin, _mirror = (__xScale < 0), _flip = (__yScale < 0), _angle = __angle, _tileset = __tileset) {
 		/*@ignore*/ static _methodName = "LoadTilemap";
 		/*@ignore*/ static _nonRoomMessage = "load tilemaps from";
@@ -571,6 +593,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Id.Sprite}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/screenshotting#screenshotsprite
 	static ScreenshotSprite = function(_room, _xOrigin = __xOrigin, _yOrigin = __yOrigin, _flags = __flags, _xScale = __xScale, _yScale = __yScale) {
 		/*@ignore*/ static _methodName = "ScreenshotSprite";
 		
@@ -594,6 +617,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Id.Surface}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/screenshotting#screenshotsurface
 	static ScreenshotSurface = function(_room, _flags = __flags, _xScale = __xScale, _yScale = __yScale) {
 		/*@ignore*/ static _methodName = "ScreenshotSurface";
 		
@@ -618,6 +642,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/screenshotting#screenshotbuffer
 	static ScreenshotBuffer = function(_room, _flags = __flags, _xScale = __xScale, _yScale = __yScale) {
 		/*@ignore*/ static _methodName = "ScreenshotBuffer";
 		
@@ -642,6 +667,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#xorigin
 	static XOrigin = function(_xOrigin) {
 		__xOrigin = _xOrigin;
 		
@@ -655,6 +681,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#yorigin
 	static YOrigin = function(_yOrigin) {
 		__yOrigin = _yOrigin;
 		
@@ -669,6 +696,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#origin-1
 	static Origin = function(_xOrigin, _yOrigin = _xOrigin) {
 		__xOrigin = _xOrigin;
 		__yOrigin = _yOrigin;
@@ -681,6 +709,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#presets
 	static TopLeft = function() {
 		__xOrigin = 0;
 		__yOrigin = 0;
@@ -693,6 +722,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#presets
 	static TopCenter = function() {
 		__xOrigin = 0.5;
 		__yOrigin = 0;
@@ -705,6 +735,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#presets
 	static TopRight = function() {
 		__xOrigin = 1;
 		__yOrigin = 0;
@@ -717,6 +748,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#presets
 	static MiddleLeft = function() {
 		__xOrigin = 0;
 		__yOrigin = 0.5;
@@ -729,6 +761,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#presets
 	static MiddleCenter = function() {
 		__xOrigin = 0.5;
 		__yOrigin = 0.5;
@@ -741,6 +774,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#presets
 	static MiddleRight = function() {
 		__xOrigin = 1;
 		__yOrigin = 0.5;
@@ -753,6 +787,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#presets
 	static BottomLeft = function() {
 		__xOrigin = 0;
 		__yOrigin = 1;
@@ -765,6 +800,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#presets
 	static BottomCenter = function() {
 		__xOrigin = 0.5;
 		__yOrigin = 1;
@@ -777,6 +813,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#presets
 	static BottomRight = function() {
 		__xOrigin = 1;
 		__yOrigin = 1;
@@ -794,6 +831,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#flags-1
 	static Flags = function(_flags) {
 		__ResetStateFlags();
 		__flags = _flags;
@@ -808,6 +846,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#builder
 	static Instances = function() {
 		__ResetStateFlags();
 		__flags |= ROOMLOADER_FLAG_INSTANCES;
@@ -822,6 +861,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#builder
 	static Tilemaps = function() {
 		__ResetStateFlags();
 		__flags |= ROOMLOADER_FLAG_TILEMAPS;
@@ -836,6 +876,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#builder
 	static Sprites = function() {
 		__ResetStateFlags();
 		__flags |= ROOMLOADER_FLAG_SPRITES;
@@ -850,6 +891,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#builder
 	static Sequences = function() {
 		__ResetStateFlags();
 		__flags |= ROOMLOADER_FLAG_SEQUENCES;
@@ -864,6 +906,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#builder
 	static Particles = function() {
 		__ResetStateFlags();
 		__flags |= ROOMLOADER_FLAG_PARTICLES;
@@ -878,6 +921,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#builder
 	static Texts = function() {
 		__ResetStateFlags();
 		__flags |= ROOMLOADER_FLAG_TEXTS;
@@ -892,6 +936,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#builder
 	static Backgrounds = function() {
 		__ResetStateFlags();
 		__flags |= ROOMLOADER_FLAG_BACKGROUNDS;
@@ -906,6 +951,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#builder
 	static Effects = function() {
 		__ResetStateFlags();
 		__flags |= ROOMLOADER_FLAG_EFFECTS;
@@ -923,6 +969,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#xscale
 	static XScale = function(_xScale) {
 		__xScale = _xScale;
 		
@@ -936,6 +983,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#yscale
 	static YScale = function(_yScale) {
 		__yScale = _yScale;
 		
@@ -950,6 +998,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#scale
 	static Scale = function(_xScale, _yScale = _xScale) {
 		__xScale = _xScale;
 		__yScale = _yScale;
@@ -964,6 +1013,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#mirror
 	static Mirror = function(_mirror = true) {
 		if (_mirror) {
 			__xScale = -1;
@@ -979,6 +1029,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#flip
 	static Flip = function(_flip = true) {
 		if (_flip) {
 			__yScale = -1;
@@ -994,6 +1045,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#angle
 	static Angle = function(_angle) {
 		__angle = _angle;
 		
@@ -1010,6 +1062,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#tileset
 	static Tileset = function(_tileset) {
 		__tileset = _tileset;
 		
@@ -1017,7 +1070,7 @@ function RoomLoader() {
 	};
 	
 	/// Defines a subsection of the room to capture in screenshots. Not related to Loading.
-	/// Coordinates and dimensions are expressed as percentages of the full room size in 0–1 range.
+	/// Coordinates and dimensions are expressed as percentages of the full room size in 0-1 range.
 	/// 
 	/// @param {Real} left The horizontal offset (from 0 to 1) from the left edge of the room to screenshot.
 	/// @param {Real} top The vertical offset (from 0 to 1) from the top edge of the room to screenshot.
@@ -1026,6 +1079,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/state#part
 	static Part = function(_left, _top, _width, _height) {
 		__left = _left;
 		__top = _top;
@@ -1045,6 +1099,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/layerNameFiltering#layerwhitelistadd
 	static LayerWhitelistAdd = function() {
 		var _i = 0; repeat (argument_count) {
 			__layerWhitelist.__Add(argument[_i]);
@@ -1060,6 +1115,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/layerNameFiltering#layerwhitelistremove
 	static LayerWhitelistRemove = function() {
 		var _i = 0; repeat (argument_count) {
 			__layerWhitelist.__Remove(argument[_i]);
@@ -1075,6 +1131,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/layerNameFiltering#layerwhitelistset
 	static LayerWhitelistSet = function(_layerNames) {
 		__layerWhitelist.__Set(_layerNames);
 		
@@ -1085,6 +1142,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/layerNameFiltering#layerwhitelistreset
 	static LayerWhitelistReset = function() {
 		__layerWhitelist.__Reset();
 		
@@ -1095,6 +1153,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Array<String>}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/layerNameFiltering#layerwhitelistget
 	static LayerWhitelistGet = function() {
 		return __layerWhitelist.__Get();
 	};
@@ -1108,6 +1167,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/layerNameFiltering#layerblacklistadd
 	static LayerBlacklistAdd = function() {
 		var _i = 0; repeat (argument_count) {
 			__layerBlacklist.__Add(argument[_i]);
@@ -1123,6 +1183,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/layerNameFiltering#layerblacklistremove
 	static LayerBlacklistRemove = function() {
 		var _i = 0; repeat (argument_count) {
 			__layerBlacklist.__Remove(argument[_i]);
@@ -1138,6 +1199,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/layerNameFiltering#layerblacklistset
 	static LayerBlacklistSet = function(_layerNames) {
 		__layerBlacklist.__Set(_layerNames);
 		
@@ -1148,6 +1210,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Struct.RoomLoader}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/layerNameFiltering#layerblacklistreset
 	static LayerBlacklistReset = function() {
 		__layerBlacklist.__Reset();
 		
@@ -1158,6 +1221,7 @@ function RoomLoader() {
 	/// 
 	/// @returns {Array<String>}
 	/// @self RoomLoader
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/layerNameFiltering#layerblacklistget
 	static LayerBlacklistGet = function() {
 		return __layerBlacklist.__Get();
 	};

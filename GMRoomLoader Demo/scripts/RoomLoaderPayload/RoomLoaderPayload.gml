@@ -1,21 +1,23 @@
 // feather ignore all
-// Documentation: https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/overview
 
 /// Returned from RoomLoader.Load(). Stores all newly created layers and elements, handles element fetching and cleanup.
 /// Only used by RoomLoader.Load() and should NOT be explicitly instantiated.
 /// 
 /// @param {Asset.GMRoom} room
+/// 
 /// @returns {Struct.RoomLoaderPayload} self
+/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/overview
 function RoomLoaderPayload(_room) constructor {
 	#region Depth
 	
 	/// Shifts all layers to a depth above layerOrDepth, with an optional depth offset.
 	/// 
 	/// @param {Id.Layer, String, Real} layerOrDepth The layer or depth to shift depth above.
-	/// @param {Real} offset The depth offset [Default: -100]
+	/// @param {Real} offset The depth offset [Default: `-100`]
 	/// 
 	/// @returns {Struct.RoomLoaderPayload}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/depth#depthabove
 	static DepthAbove = function(_lod, _offset = -100) {
 		static _methodName = "DepthAbove";
 		
@@ -47,6 +49,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Struct.RoomLoaderPayload}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/depth#depthbelow
 	static DepthBelow = function(_lod, _offset = +100) {
 		static _methodName = "DepthBelow";
 		
@@ -78,6 +81,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Struct}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getbbox
 	static GetBbox = function() {
 		return __bbox;
 	};
@@ -87,6 +91,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Array<Real>}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getpolygon
 	static GetPolygon = function() {
 		if (__polygon != undefined) {
 			return __polygon;
@@ -115,6 +120,7 @@ function RoomLoaderPayload(_room) constructor {
 			_cx + _hwCos - _hhSin, _cy - _hwSin - _hhCos, // BR
 			_cx - _hwCos - _hhSin, _cy + _hwSin - _hhCos, // BL
 		];
+		
 		return __polygon;
 	};
 	
@@ -124,6 +130,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Id.Layer,Undefined}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getlayer
 	static GetLayer = function(_name) {
 		__RoomLoaderCatchString(__messagePrefix, "GetLayer", _name, "get a Layer ID from the", "name");
 		return __layers.__Get(_name);
@@ -133,6 +140,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Array<Id.Layer>}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getlayers
 	static GetLayers = function() {
 		return __layers.__ids;
 	};
@@ -143,6 +151,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Id.Instance,noone}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getinstance
 	static GetInstance = function(_roomId) {
 		return __instances.__Get(_roomId);
 	};
@@ -153,6 +162,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Array<Id.Instance>}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getinstances
 	static GetInstances = function(_obj = undefined) {
 		static _closure = {};
 		static _Filter = method(_closure, function(_inst) {
@@ -169,6 +179,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Array<Id.Instance>}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#detachinstances
 	static DetachInstances = function() {
 		return __instances.__Detach();
 	};
@@ -179,6 +190,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Id.Tilemap,Undefined}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#gettilemap
 	static GetTilemap = function(_layerName) {
 		__RoomLoaderCatchString(__messagePrefix, "GetTilemap", _layerName, "get a Tilemap ID from the", "layer name");
 		return __tilemaps.__Get(_layerName);
@@ -188,6 +200,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Array<Id.Tilemap>}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#gettilemaps
 	static GetTilemaps = function() {
 		return __tilemaps.__ids;
 	};
@@ -198,6 +211,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Id.Sprite,Undefined}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getsprite
 	static GetSprite = function(_roomId) {
 		__RoomLoaderCatchString(__messagePrefix, "GetSprite", _roomId, "get a Sprite ID from the", "room ID");
 		return __sprites.__Get(_roomId);
@@ -207,6 +221,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Array<Id.Sprite>}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getsprites
 	static GetSprites = function() {
 		return __sprites.__ids;
 	};
@@ -217,6 +232,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Id.Sequence,Undefined}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getsequence
 	static GetSequence = function(_roomId) {
 		__RoomLoaderCatchString(__messagePrefix, "GetSequence", _roomId, "get a Sequence ID from the", "room ID");
 		return __sequences.__Get(_roomId);
@@ -226,6 +242,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Array<Id.Sequence>}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getsequences
 	static GetSequences = function() {
 		return __sequences.__ids;
 	};
@@ -236,6 +253,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Id.ParticleSystem,Undefined}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getparticlesystem
 	static GetParticleSystem = function(_roomId) {
 		__RoomLoaderCatchString(__messagePrefix, "GetParticleSystem", _roomId, "get a Particle System ID from the", "room ID");
 		return __particleSystems.__Get(_roomId);
@@ -245,6 +263,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Array<Id.ParticleSystem>}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getparticlesystems
 	static GetParticleSystems = function() {
 		return __particleSystems.__ids;
 	};
@@ -255,6 +274,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Id.Text,Undefined}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#gettext
 	static GetText = function(_roomId) {
 		__RoomLoaderCatchString(__messagePrefix, "GetText", _roomId, "get a Text ID from the", "room ID");
 		return __texts.__Get(_roomId);
@@ -264,6 +284,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Array<Id.Text>}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#gettexts
 	static GetTexts = function() {
 		return __texts.__ids;
 	};
@@ -274,6 +295,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Id.Background,Undefined}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getbackground
 	static GetBackground = function(_layerName) {
 		__RoomLoaderCatchString(__messagePrefix, "GetBackground", _layerName, "get a Background ID from the", "layer name");
 		return __backgrounds.__Get(_layerName);
@@ -283,6 +305,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Array<Id.Background>}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/getters#getbackgrounds
 	static GetBackgrounds = function() {
 		return __backgrounds.__ids;
 	};
@@ -299,6 +322,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Bool}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/status#isinview
 	static IsInView = function(_camera = view_camera[0], _pad = 0) {
 		var _camW = camera_get_view_width(_camera);
 		var _camH = camera_get_view_height(_camera);
@@ -338,6 +362,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Bool}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/status#ispointinside
 	static IsPointInside = function(_px, _py) {
 		if (__obb != undefined) {
 			var _dx = _px - __obb.__centerX;
@@ -355,6 +380,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Bool}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/status#iscleanedup
 	static IsCleanedUp = function() {
 		return __cleanedUp;
 	};
@@ -369,6 +395,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// 
 	/// @returns {Struct.RoomLoaderPayload}
 	/// @self RoomLoaderPayload
+	/// @url https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/cleanup#cleanup-1
 	static Cleanup = function(_fireDestroyEvents = true) {
 		static _methodName = "Cleanup";
 		

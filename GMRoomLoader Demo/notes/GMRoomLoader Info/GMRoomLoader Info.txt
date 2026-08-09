@@ -1,8 +1,24 @@
-
 # GMRoomLoader v3.2.0 (2026.06.17) Info
 
-- Author: Gleb Tsereteli
+## General
+
+- Author: [Gleb Tsereteli](https://linktr.ee/GlebTsereteli)
 - GitHub: https://github.com/glebtsereteli/GMRoomLoader
 - itch.io: https://glebtsereteli.itch.io/gmroomloader
 - Documentation: https://glebtsereteli.github.io/GMRoomLoader
-- Support: Visit the dedicated GMRoomLoader channel on the [GameMaker Kitchen](https://discord.gg/gamemakerkitchen) Discord server.
+
+## Tutorials
+
+Want to see GMRoomLoader in action? Check out these community tutorials:
+
+- **Spelunky Dungeon**. [Procedural Level Generation](https://www.youtube.com/watch?v=gUlcha0e7Hg) by [Pixelated Pope](https://www.youtube.com/@PixelatedPope) and yours truly, on the official GameMaker channel. Jon builds a Spelunky-style procedural dungeon, carving a path of hand-crafted rooms loaded at runtime with GMRoomLoader.
+- **Simultaneous Rooms**. [GMRoomLoader: Simultaneous Room Loading in GameMaker](https://www.youtube.com/watch?v=mZegvOC47dw) by [DragoniteSpam](https://www.youtube.com/c/DragoniteSpam/about). Michael introduces GMRoomLoader basics and goes over a few interesting edge cases.
+
+## Help & Support
+
+If you're looking for help, visit one of the following:
+
+- [FAQ](https://glebtsereteli.github.io/GMRoomLoader/pages/help/faq) for common questions.
+- [Troubleshooting](https://glebtsereteli.github.io/GMRoomLoader/pages/help/troubleshooting) for info on solving common issues.
+- [Contact & Support](https://glebtsereteli.github.io/GMRoomLoader/pages/help/contactSupport) to ask directly, report a bug, or suggest a feature.
+- Visit the dedicated `#gleb___gmroomloader` channel on the [GameMaker Kitchen](https://discord.gg/8krYCqr) Discord server if you need help.
