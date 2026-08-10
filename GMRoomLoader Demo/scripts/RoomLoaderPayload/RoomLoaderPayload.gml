@@ -1,7 +1,7 @@
 // feather ignore all
 
-/// Returned from RoomLoader.Load(). Stores all newly created layers and elements, handles element fetching and cleanup.
-/// Only used by RoomLoader.Load() and should NOT be explicitly instantiated.
+/// Returned from [RoomLoader.Load()](https://glebtsereteli.github.io/GMRoomLoader/pages/api/roomLoader/loading#load). Stores all newly created layers and elements, handles element fetching and cleanup.
+/// Only used by full room loading and should NOT be explicitly instantiated.
 /// 
 /// @param {Asset.GMRoom} room
 /// 
@@ -45,7 +45,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// Shifts all layers to a depth below layerOrDepth, with an optional depth offset.
 	/// 
 	/// @param {Id.Layer, String, Real} layerOrDepth The layer or depth to shift depth below.
-	/// @param {Real} offset The depth offset [Default: +100]
+	/// @param {Real} offset The depth offset [Default: `+100`]
 	/// 
 	/// @returns {Struct.RoomLoaderPayload}
 	/// @self RoomLoaderPayload
@@ -77,7 +77,8 @@ function RoomLoaderPayload(_room) constructor {
 	#endregion
 	#region Getters
 	
-	/// Returns the axis-aligned bounding box of the loaded room as a struct with x1, y1 (top-left) and x2, y2 (bottom-right) coordinates.
+	/// Returns the axis-aligned bounding box of the loaded room as a struct with `x1`, `y1` (top-left) and `x2`, `y2` (bottom-right) coordinates.
+	/// Accounts for any combination of the loaded room's position, origin, scale, and rotation.
 	/// 
 	/// @returns {Struct}
 	/// @self RoomLoaderPayload
@@ -87,7 +88,7 @@ function RoomLoaderPayload(_room) constructor {
 	};
 	
 	/// Returns the corners of the loaded room as a flat array of coordinates in clockwise order.
-	/// Accounts for any combination of the room's position, origin, scale, and rotation.
+	/// Accounts for any combination of the loaded room's position, origin, scale, and rotation.
 	/// 
 	/// @returns {Array<Real>}
 	/// @self RoomLoaderPayload
@@ -124,7 +125,7 @@ function RoomLoaderPayload(_room) constructor {
 		return __polygon;
 	};
 	
-	/// Returns the ID of the created layer matching the given name if found, or undefined if not found.
+	/// Returns the ID of the created layer matching the given name if found, or `undefined` if not found.
 	/// 
 	/// @param {String} name The layer name to search for.
 	/// 
@@ -145,7 +146,7 @@ function RoomLoaderPayload(_room) constructor {
 		return __layers.__ids;
 	};
 	
-	/// Returns the ID of the created Instance matching the given room ID if found, or noone if not found.
+	/// Returns the ID of the created Instance matching the given room ID if found, or `noone` if not found.
 	/// 
 	/// @param {Id.Instance} roomId The room ID of the Instance to search for.
 	/// 
@@ -158,7 +159,7 @@ function RoomLoaderPayload(_room) constructor {
 	
 	/// Returns an array of created instances, optionally filtered by object.
 	/// 
-	/// @param {Asset.GMObject} object The object to filter by. If provided, only instances of this object will be returned. [Default: undefined (no filter)]
+	/// @param {Asset.GMObject} object The object to filter by. If provided, only instances of this object will be returned. [Default: `undefined` (no filter)]
 	/// 
 	/// @returns {Array<Id.Instance>}
 	/// @self RoomLoaderPayload
@@ -175,7 +176,7 @@ function RoomLoaderPayload(_room) constructor {
 	};
 	
 	/// Detaches instances from the payload and stops tracking them. This allows instance cleanup to be handled separately from the rest of the payload.
-	/// NOTE: If detached instances remain on their original layers and those layers are destroyed during .Cleanup(), the instances will still be destroyed.
+	/// NOTE: If detached instances remain on their original layers and those layers are destroyed during [.Cleanup()](https://glebtsereteli.github.io/GMRoomLoader/pages/api/payload/cleanup#cleanup-1), the instances will still be destroyed.
 	/// 
 	/// @returns {Array<Id.Instance>}
 	/// @self RoomLoaderPayload
@@ -184,7 +185,7 @@ function RoomLoaderPayload(_room) constructor {
 		return __instances.__Detach();
 	};
 	
-	/// Returns the ID of the created Tilemap matching the given layer name if found, or undefined if not found.
+	/// Returns the ID of the created Tilemap matching the given layer name if found, or `undefined` if not found.
 	/// 
 	/// @param {String} layerName The Tile layer name to search for.
 	/// 
@@ -205,7 +206,7 @@ function RoomLoaderPayload(_room) constructor {
 		return __tilemaps.__ids;
 	};
 	
-	/// Returns the ID of the created Sprite matching the given room ID if found, or undefined if not found.
+	/// Returns the ID of the created Sprite matching the given room ID if found, or `undefined` if not found.
 	/// 
 	/// @param {String} roomId The room ID of the Sprite to search for.
 	/// 
@@ -226,7 +227,7 @@ function RoomLoaderPayload(_room) constructor {
 		return __sprites.__ids;
 	};
 	
-	/// Returns the ID of the created Sequence matching the given room ID if found, or undefined if not found.
+	/// Returns the ID of the created Sequence matching the given room ID if found, or `undefined` if not found.
 	/// 
 	/// @param {String} roomId The room ID of the Sequence to search for.
 	/// 
@@ -247,7 +248,7 @@ function RoomLoaderPayload(_room) constructor {
 		return __sequences.__ids;
 	};
 	
-	/// Returns the ID of the created Particle System matching the given room ID if found, or undefined if not found.
+	/// Returns the ID of the created Particle System matching the given room ID if found, or `undefined` if not found.
 	/// 
 	/// @param {String} roomId The room ID of the Particle System to search for.
 	/// 
@@ -268,7 +269,7 @@ function RoomLoaderPayload(_room) constructor {
 		return __particleSystems.__ids;
 	};
 	
-	/// Returns the ID of the created Text matching the given room ID if found, or undefined if not found.
+	/// Returns the ID of the created Text matching the given room ID if found, or `undefined` if not found.
 	/// 
 	/// @param {String} roomId The room ID of the Text to search for.
 	/// 
@@ -289,7 +290,7 @@ function RoomLoaderPayload(_room) constructor {
 		return __texts.__ids;
 	};
 	
-	/// Returns the ID of the created Background matching the given layer name if found, or undefined if not found.
+	/// Returns the ID of the created Background matching the given layer name if found, or `undefined` if not found.
 	/// 
 	/// @param {String} layerName The Background layer name to search for.
 	/// 
@@ -313,12 +314,12 @@ function RoomLoaderPayload(_room) constructor {
 	#endregion
 	#region Status
 	
-	/// Returns whether the loaded room overlaps the given camera's view (true) or not (false).
+	/// Returns whether the loaded room overlaps the given camera's view (`true`) or not (`false`).
 	/// Handles any combination of camera and loaded room positioning, scaling, and rotation.
 	/// Positive padding expands the view bounds outward, negative padding shrinks them inward.
 	/// 
-	/// @param {Id.Camera} camera The camera to check against. [Default: view_camera[0]]
-	/// @param {Real} padding The padding to apply to the view bounds. [Default: 0]
+	/// @param {Id.Camera} camera The camera to check against. [Default: `view_camera[0]`]
+	/// @param {Real} padding The padding to apply to the view bounds. [Default: `0`]
 	/// 
 	/// @returns {Bool}
 	/// @self RoomLoaderPayload
@@ -376,7 +377,7 @@ function RoomLoaderPayload(_room) constructor {
 		return point_in_rectangle(_px, _py, __bbox.x1, __bbox.y1, __bbox.x2, __bbox.y2);
 	};
 	
-	/// Returns whether the payload has been cleaned up (true) or not (false).
+	/// Returns whether the payload has been cleaned up (`true`) or not (`false`).
 	/// 
 	/// @returns {Bool}
 	/// @self RoomLoaderPayload
@@ -391,7 +392,7 @@ function RoomLoaderPayload(_room) constructor {
 	/// Destroys all created layers and elements.
 	/// After calling this method, the Payload instance should be dereferenced to be picked up by the Garbage Collector.
 	/// 
-	/// @param {Bool} fireDestroyEvents Whether to fire Destroy events on cleaned up instances. [Default: true]
+	/// @param {Bool} fireDestroyEvents Whether to fire Destroy events on cleaned up instances. [Default: `true`]
 	/// 
 	/// @returns {Struct.RoomLoaderPayload}
 	/// @self RoomLoaderPayload
@@ -424,23 +425,24 @@ function RoomLoaderPayload(_room) constructor {
 	
 	#region __private
 	
-	static __messagePrefix = "Payload";
+	/*@ignore*/ static __messagePrefix = "Payload";
 	
-	__room = _room;
-	__bbox = undefined;
-	__obb = undefined;
-	__polygon = undefined;
+	/*@ignore*/ __room = _room;
+	/*@ignore*/ __bbox = undefined;
+	/*@ignore*/ __obb = undefined;
+	/*@ignore*/ __polygon = undefined;
 	
-	__layers = new __RoomLoaderPayloadContainer(layer_destroy);
-	__instances = new __RoomLoaderPayloadInstances();
-	__tilemaps = new __RoomLoaderPayloadContainer(layer_tilemap_destroy);
-	__sprites = new __RoomLoaderPayloadContainer(layer_sprite_destroy);
-	__sequences = new __RoomLoaderPayloadContainer(layer_sequence_destroy);
-	__particleSystems = new __RoomLoaderPayloadContainer(part_system_destroy);
-	__texts = new __RoomLoaderPayloadContainer(layer_text_destroy);
-	__backgrounds = new __RoomLoaderPayloadContainer(layer_background_destroy);
-	__cleanedUp = false;
+	/*@ignore*/ __layers = new __RoomLoaderPayloadContainer(layer_destroy);
+	/*@ignore*/ __instances = new __RoomLoaderPayloadInstances();
+	/*@ignore*/ __tilemaps = new __RoomLoaderPayloadContainer(layer_tilemap_destroy);
+	/*@ignore*/ __sprites = new __RoomLoaderPayloadContainer(layer_sprite_destroy);
+	/*@ignore*/ __sequences = new __RoomLoaderPayloadContainer(layer_sequence_destroy);
+	/*@ignore*/ __particleSystems = new __RoomLoaderPayloadContainer(part_system_destroy);
+	/*@ignore*/ __texts = new __RoomLoaderPayloadContainer(layer_text_destroy);
+	/*@ignore*/ __backgrounds = new __RoomLoaderPayloadContainer(layer_background_destroy);
+	/*@ignore*/ __cleanedUp = false;
 	
+	/// @ignore
 	static __GetTargetDepth = function(_lod, _methodName) {
 		var _targetDepth = undefined;
 		if (is_real(_lod)) {
