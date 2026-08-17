@@ -6,30 +6,47 @@ function __RoomLoaderDataLayerTile(_layerData, _elementsData) : __RoomLoaderData
 	static __tile = true;
 	
 	static __OnInit = function() {
+		static _ProcessTilePush = function(_data, _i) {
+			if (_data > 0) {
+				array_push(tiles, _i mod width, _i div width, _data);
+			}
+		};
+		static _ProcessTilePrealloc = function(_data, _i) {
+			if (_data > 0) {
+				__temp[__count++] = _i mod width;
+				__temp[__count++] = _i div width;
+				__temp[__count++] = _data;
+			}
+		};
+		
 		tileset = __tilemapData.tileset_index;
 		width = __tilemapData.width;
 		height = __tilemapData.height;
 		
 		var _tilesData = __tilemapData.tiles;
-		var _n = array_length(_tilesData);
 		
-		tiles = array_create(_n * __ROOMLOADER_TILE_STEP);
-		var _count = 0;
-		
-		var _i = 0; repeat (_n) {
-			var _data = _tilesData[_i];
-			if (_data > 0) {
-				tiles[_count++] = _i mod width;
-				tiles[_count++] = _i div width;
-				tiles[_count++] = _data;
-			}
-			_i++;
+		if (code_is_compiled()) {
+			__temp = array_create(array_length(_tilesData) * __ROOMLOADER_TILE_STEP);
+			__count = 0;
+			
+			array_foreach(_tilesData, _ProcessTilePrealloc);
+			
+			tiles = array_create(__count);
+			array_copy(tiles, 0, __temp, 0, __count);
+			__n = __count / __ROOMLOADER_TILE_STEP;
+			
+			struct_remove(self, "__temp");
+			struct_remove(self, "__count");
+		}
+		else {
+			tiles = [];
+			array_foreach(_tilesData, _ProcessTilePush);
+			__n = array_length(tiles) / __ROOMLOADER_TILE_STEP;
 		}
 		
-		array_resize(tiles, _count);
-		__n = _count / __ROOMLOADER_TILE_STEP;
-		
 		__owner.__tilemapsLut[$ __layerData.name] = self;
+		
+		delete __tilemapData;
 	};
 	static __OnLoad = function(_layer, _xOffset, _yOffset) {
 		var _tilemap = __CreateTilemap(_layer, _xOffset, _yOffset);

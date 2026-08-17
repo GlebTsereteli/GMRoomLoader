@@ -3,7 +3,7 @@
 #region Info
 
 #macro __ROOMLOADER_VERSION "v3.2.0" // major.minor.patch
-#macro __ROOMLOADER_DATE "2026.08.17" // year.month.day
+#macro __ROOMLOADER_DATE "2026.08.24" // year.month.day
 #macro __ROOMLOADER_NAME "GMRoomLoader"
 
 #endregion
@@ -90,7 +90,7 @@ _preCreate.image_angle = _anglePrev;
 
 #macro __ROOMLOADER_TILEMAP_ADD_TO_PAYLOAD \
 if ((ROOMLOADER_DELIVER_PAYLOAD) and (_tilemap != undefined)) { \
-	RoomLoader.__payload.__tilemaps.__Add(_tilemap, __tilemapData.name); \
+	RoomLoader.__payload.__tilemaps.__Add(_tilemap, __layerData.name); \
 }
 
 #macro __ROOMLOADER_TILEMAP_CREATE_RAW \
